@@ -1,27 +1,59 @@
-// const pageUlr = 'https://image.tmdb.org/t/p/w500';
-// const listImages = document.querySelector('.js-list');
-// const notFound = 'https://blog.vverh.digital/wp-content/uploads/2020/06/oblojka-404.png';
-// let src;
-// let imgList = [];
+const inputSearch = document.querySelector('.search-film'); 
+const btnNumber = document.querySelector('.page-number');
+const btnPrev = document.querySelector('.js-btn-prev');
+const btnNext = document.querySelector('.js-btn-next');
+const btnPages = document.querySelector('.pages');
+const myKey = '2f2663043f4e6e1c1ca2fc9d3ec31eb9';
+const urlSearch = "https://api.themoviedb.org/3/search/collection?";
+const urlPopular = "https://api.themoviedb.org/3/movie/popular?";
+let value;
+let page = 1;
+let options;
+let totalPages = 0;
+let loadPage = true;
 
-// let liArray = array.results.map(item => createlist(item)).join('');
+function getFilmsList(e) {
+    value = inputSearch.value;
+    if (e === 'next') {page += 1} else if (e === 'prev') { if (page <= 1) {return;}  else {page -= 1}} else {page = 1}
+    btnNumber.textContent = page;
 
-// listImages.innerHTML = liArray;
+    if (loadPage) {options = `${urlPopular}api_key=${myKey}&language=en-US&page=${page}`;} else {options = `${urlSearch}api_key=${myKey}&language=ru-RU,en-US&query=${value}&page=${page}`;}
+    fetch(options)
+      .then((response) => response.json())
+      .then((data) => {postList(data); showPages(data.total_pages, page)})
+      .catch((error) => console.log(error));
+  }
 
-// function createlist(array) {
+  function showPages(totalPages, page) {
+    if (totalPages === 1) {btnPrev.disabled = true; btnNext.disabled = true; return;}
+    if (totalPages >= 2) {btnNext.disabled = false;}
+    if (page === 1) {btnPrev.disabled = true;} else {btnPrev.disabled = false;}
+    if (totalPages === page) {btnNext.disabled = true;}
+  }
 
-//     if (array.poster_path !== null) {src = pageUlr+array.poster_path;} else {src = notFound;}
+  getFilmsList();
+document.addEventListener('keydown', event => {
+    // console.log(event.code)
+    if (event.code === "Enter") {
+        getFilmsList();
+        loadPage = false;
+    }
+});
+btnPrev.addEventListener('click', event => {
+    getFilmsList('prev')
+});
+btnNext.addEventListener('click', event => {
+    getFilmsList('next')
+});
 
-//     let li = `<li class="list-items">
-//         <img src="${src}" alt="" class="list-items__img">
-//         <div class="layout">
-//             <p class="list-items__title">${array.name}</p>
-//         </div>   
-//         </li>`
+// function getFilmsList(e) {
+//     value = inputSearch.value;
+//     if (e === 'next') {page += 1} else if (e === 'prev') { if (page <= 1) {return;}  else {page -= 1}} else {page = 1}
+//     btnNumber.textContent = page;
 
-//     return li;
-// }
-
-const btnSearch = document.querySelector('.search-film'); 
-
-
+//     options = `api_key=${myKey}&language=ru-RU&query=${value}&page=${page}`;
+//     fetch(getUrl + options)
+//       .then((response) => response.json())
+//       .then((data) => postList(data))
+//       .catch((error) => console.log(error));
+//   }
