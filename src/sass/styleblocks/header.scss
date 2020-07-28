@@ -1,0 +1,118 @@
+.container {
+    max-width: 320px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin: 0 auto;
+  }
+
+header {
+    background-color: $primary-color;
+    height: 65px;
+    padding-top: 20px;
+    
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    align-items: center;
+}
+
+.header-logo__title {
+    display: none;
+}
+
+.header-nav_list {
+    display: flex;
+    list-style: none;
+    font-size: 0;
+}
+
+
+
+.header-nav_item a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $disabled-text-color;
+    font-family: 'Roboto Medium', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    border-bottom: 3px solid $primary-color;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    transition: 0.2s;
+}
+
+.header-nav_item a:hover {
+    border-bottom: 3px solid $active-text-color;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    color: $active-text-color;
+    font-weight: 500;
+}
+
+.header-nav_item {
+    margin-right: 40px;
+}
+
+.header-nav_item:last-child {
+        margin-right: 0;
+}
+
+//  ==================  TABLET  ===================
+
+@media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    .header-logo {
+        display: flex;
+    }
+
+    .header-logo__title {
+        display: block;
+        font-family: 'Roboto Medium', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        color: $disabled-text-color;
+        margin-left: 5px;
+        font-size: 20px;
+    }
+
+  }
+
+
+//  ==================  DESKTOP  ===================
+
+@media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    .header-logo {
+        display: flex;
+    }
+
+    .header-logo__title {
+        display: block;
+        font-family: 'Roboto Medium', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        color: $disabled-text-color;
+        margin-left: 5px;
+        font-size: 22px;
+    }
+
+  }
