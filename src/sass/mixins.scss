@@ -1,0 +1,57 @@
+@mixin hover-supported {
+    @media not all and (pointer: coarse) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin breakpoints($media) {
+    @if $media == xs {
+        @media only screen and (min-width: 320px) {
+            @content;
+        }
+    } @else if $media == s {
+        @media only screen and (min-width: 768px) {
+            @content;
+        }
+    } @else if $media == m {
+        @media only screen and (min-width: 992px) {
+            @content;
+        } 
+    } @else if $media == ml {
+        @media only screen and (min-width: 1024px) {
+            @content;
+        } 
+    } @else if $media == l {
+        @media only screen and (min-width: 1200px) {
+            @content;
+        }
+    } @else if $media == xl {
+        @media only screen and (min-width: 1440px) {
+            @content;
+        }
+    } @else {
+        @media only screen and (min-width: $media) {
+            @content;
+        }
+    }
+}
+
+/*
+  This mixin can be used to set the object-fit:
+  @include object-fit(contain);
+  or object-fit and object-position:
+  @include object-fit(cover, top);
+*/
+@mixin object-fit($fit: fill, $position: null) {
+    -o-object-fit: $fit;
+    object-fit: $fit;
+    @if $position {
+        -o-object-position: $position;
+        object-position: $position;
+        font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    } @else {
+        font-family: 'object-fit: #{$fit}';
+    }
+}
