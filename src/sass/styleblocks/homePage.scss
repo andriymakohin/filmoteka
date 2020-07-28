@@ -67,11 +67,7 @@ input.search-film {
 
 
 @media (min-width: 768px) {
-    .container {
-      max-width: 768px;
-      padding-left: 28px;
-      padding-right: 28px;
-    }
+
 
     .list{
         display: flex;
@@ -89,12 +85,9 @@ input.search-film {
   }
 
 
-  @media (min-width: 1024px) {
-    .container {
-      max-width: 1024px;
-      padding-left: 28px;
-      padding-right: 28px;
-    }
+// =================== DESKTOP =================
+
+@media (min-width: 1024px) {
 
     .list{
         display: flex;
@@ -103,13 +96,14 @@ input.search-film {
     }
     .list-items__img {
         width: 446px;
-        height: 244px;
+        height: 246px;
     }
     .layout{
         width: 446px;
-        height: 244px;
+        height: 246px;
     }
   }
+
 
 
   
