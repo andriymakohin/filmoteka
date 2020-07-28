@@ -23,22 +23,14 @@ function activeHomePage() {
   refs.movieWrap.classList.remove('display-section');
   refs.detailsPageNone.classList.add('display-section');
   refs.filmLibraryPageNone.classList.add('display-section');
-//   thumbs.addEventListener('click', plaginationNavigation);
   refs.navbarHome.classList.add('header-nav__item--active');
   refs.navbarLibrary.classList.remove('header-nav__item--active');
-
   refs.formWrap.classList.remove('display-section');
   refs.thumbs.classList.remove('display-section');
-
   refs.thumbs.classList.remove('display-section');
 
-//   pageNumber = 1;
-//   paginationTxt.innerText = pageNumber;
-  
-//   fetchPopularMoviesList();
-
-  refs.addToQueue.removeEventListener('click', toggleToQueue);
-  refs.addToWatched.removeEventListener('click', toggleToWatched);
+  // refs.addToQueue.removeEventListener('click', toggleToQueue);
+  // refs.addToWatched.removeEventListener('click', toggleToWatched);
 }
 
 function activeLibraryPage() {
