@@ -2,7 +2,6 @@ const refs = {
     home_library: Array.from(document.querySelectorAll('.header-nav_item')),
     addToWatched: document.querySelector('film__btn--favorite'),
     addToQueue: document.querySelector('.film__btn--queue'),
-    // main: document.querySelector('.main'),
     detailsPageNone: document.querySelector('.film'),
     filmLibraryPageNone: document.querySelector('.header-search__library'),
     thumbsNextBtn: document.querySelector('.js-btn-next'),
@@ -26,8 +25,6 @@ function activeHomePage() {
   refs.navbarHome.classList.add('header-nav__item--active');
   refs.navbarLibrary.classList.remove('header-nav__item--active');
   refs.formWrap.classList.remove('display-section');
-  refs.thumbs.classList.remove('display-section');
-  refs.thumbs.classList.remove('display-section');
 
   // refs.addToQueue.removeEventListener('click', toggleToQueue);
   // refs.addToWatched.removeEventListener('click', toggleToWatched);
@@ -37,7 +34,6 @@ function activeLibraryPage() {
   refs.detailsPageNone.classList.add('display-section');
   refs.movieWrap.classList.add('display-section');
   refs.filmLibraryPageNone.classList.remove('display-section');
-
   refs.navbarHome.classList.remove('header-nav__item--active');
   refs.navbarLibrary.classList.add('header-nav__item--active');
 //   drawQueueFilmList();
@@ -78,7 +74,7 @@ function activeDetailsPage(e) {
   refs.addToWatched.addEventListener('click', toggleToWatched);
 }
 
-// activeHomePage();
+activeHomePage();
 
 refs.home_library[0].addEventListener('click', activeHomePage);
 refs.home_library[1].addEventListener('click', activeLibraryPage);
