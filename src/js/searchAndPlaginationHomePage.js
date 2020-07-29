@@ -44,6 +44,9 @@ function plaginationPages(totalPages, page) {
   totalPages === page ? (btnNext.disabled = true) : null;
 }
 
+
+
+
 getFilmsList();
 
 document.addEventListener('keydown', event => {
