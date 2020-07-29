@@ -1,21 +1,7 @@
 const addQueueButton = document.querySelector('#js-addQueueButton');
 const addWatchedButton = document.querySelector('#js-addWatchedButton');
 
-function monitorButtonStatusText() {
-    let localStorageFilmsQueue = localStorage.getItem('filmsQueue');
-    localStorageFilmsQueue === null
-        ? addQueueButton.textContent = "Add to queue"
-        : JSON.parse(localStorageFilmsQueue).find(el => el.id === selectFilm.id)
-            ? addQueueButton.textContent = "Delete from queue"
-            : addQueueButton.textContent = "Add to queue";
 
-    let localStorageFilmsWatched = localStorage.getItem('filmsWatched');
-    localStorageFilmsWatched === null
-        ? addWatchedButton.textContent = "Add to watched"
-        : JSON.parse(localStorageFilmsWatched).find(el => el.id === selectFilm.id)
-            ? addWatchedButton.textContent = "Delete from watched"
-            : addWatchedButton.textContent = "Add to watched";
-}
 
 function toggleToQueue() {
     let filmsQueueArr = [];
@@ -35,7 +21,6 @@ function toggleToQueue() {
 
 function toggleToWatched() {
     let filmsWatchedArr = [];
-    console.log(filmsWatchedArr);
     let localStorageData = localStorage.getItem('filmsWatched');
     if (localStorageData !== null) {
         filmsWatchedArr.push(...JSON.parse(localStorageData));
@@ -49,9 +34,12 @@ function toggleToWatched() {
     monitorButtonStatusText();
 }
 
+//const setPoster = `https://image.tmdb.org/t/p/w500${selectFilm.poster_path}`;
+
+
 function showDetails(selectFilm) {
     let img = document.querySelector('#js-detailsImg');
-    img.setAttribute();
+    img.setAttribute(`https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`)
 
     let title = document.querySelector('#js-detailsTitle');
     title.textContent = selectFilm.title;
@@ -72,5 +60,21 @@ function showDetails(selectFilm) {
     textDetails.textContent = selectFilm.overview;
 
     monitorButtonStatusText();
+}
+
+function monitorButtonStatusText() {
+    let localStorageFilmsQueue = localStorage.getItem('filmsQueue');
+    localStorageFilmsQueue === null
+        ? addQueueButton.textContent = "Add to queue"
+        : JSON.parse(localStorageFilmsQueue).find(el => el.id === selectFilm.id)
+            ? addQueueButton.textContent = "Delete from queue"
+            : addQueueButton.textContent = "Add to queue";
+
+    let localStorageFilmsWatched = localStorage.getItem('filmsWatched');
+    localStorageFilmsWatched === null
+        ? addWatchedButton.textContent = "Add to watched"
+        : JSON.parse(localStorageFilmsWatched).find(el => el.id === selectFilm.id)
+            ? addWatchedButton.textContent = "Delete from watched"
+            : addWatchedButton.textContent = "Add to watched";
 }
 
