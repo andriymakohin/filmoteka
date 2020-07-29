@@ -39,7 +39,7 @@ function activeLibraryPage() {
   refs.filmLibraryPageNone.classList.remove('display-section');
   refs.navbarHome.classList.remove('header-nav__item--active');
   refs.navbarLibrary.classList.add('header-nav__item--active');
-  drawQueueFilmList();
+  // drawQueueFilmList();
 
   refs.queueBtn.classList.add('header-search__item--active');
   refs.favoriteBtn.addEventListener('click', drawWatchedFilmList);
@@ -48,28 +48,11 @@ function activeLibraryPage() {
   // refs.addToWatched.removeEventListener('click', toggleToWatched);
 }
 
-function activeDetailsPage(e) {
-  if (!e.target.closest('li')) return;
-
-  const movieId = e.target.closest('li').id;
-
-  const itsLibraryFilm = e.currentTarget.dataset.page !== 'home';
+function activeDetailsPage() {
 
   refs.movieWrap.classList.add('display-section');
   refs.filmLibraryPageNone.classList.add('display-section');
   refs.detailsPageNone.classList.remove('display-section');
-
-  if (itsLibraryFilm) {
-    selectFilm =
-      JSON.parse(localStorage.getItem('filmsQueue')).find(
-        obj => obj.id === Number(movieId),
-      ) ||
-      JSON.parse(localStorage.getItem('filmsWatched')).find(
-        obj => obj.id === Number(movieId),
-      );
-  } else {
-    selectFilm = renderFilms.find(film => film.id === Number(movieId));
-  }
   // monitorButtonStatusText();
   // showDetails(selectFilm);
 
