@@ -64,8 +64,8 @@ function plaginationPages(totalPages, page) {
 getFilmsList('popular');
 
 document.addEventListener('keydown', event => {
-  // console.log(event.code)
-  if (event.code === 'Enter') {
+  // console.log(event)
+  if (event.keyCode === 13 && inputSearch.value !== "") {
     loadPage = false;
     event.preventDefault();
     getFilmsList('search');
