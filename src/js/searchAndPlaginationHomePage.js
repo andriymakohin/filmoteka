@@ -1,27 +1,61 @@
-// const pageUlr = 'https://image.tmdb.org/t/p/w500';
-// const listImages = document.querySelector('.js-list');
-// const notFound = 'https://blog.vverh.digital/wp-content/uploads/2020/06/oblojka-404.png';
-// let src;
-// let imgList = [];
+const inputSearch = document.querySelector('.search-film');
+const btnNumber = document.querySelector('.page-number');
+const btnPrev = document.querySelector('.js-btn-prev');
+const btnNext = document.querySelector('.js-btn-next');
+const myKey = '2f2663043f4e6e1c1ca2fc9d3ec31eb9';
+const searchLang = 'en-US,uk-UA,ru-RU';
+const urlSearch = `https://api.themoviedb.org/3/search/collection?api_key=${myKey}&language=${searchLang}`;
+const urlPopular = `https://api.themoviedb.org/3/movie/popular?api_key=${myKey}&language=${searchLang}`;
+let value = '';
+let page = 1;
+let options = '';
+let totalPages = 0;
+let loadPage = true;
 
-// let liArray = array.results.map(item => createlist(item)).join('');
+function getFilmsList(event) {
+  value = inputSearch.value;
+  if (event === 'prev') {
+    if (page <= 1) {
+      return;
+    }
+    page -= 1;
+  }
+  event === 'next' ? (page += 1) : null;
+  loadPage? options = `${urlPopular}&page=${page}` : options = `${urlSearch}&query=${value}&page=${page}`;
+  fetch(options)
+    .then(response => response.json())
+    .then(data => {
+      postList(data);
+      plaginationPages(data.total_pages, page);
+      btnNumber.textContent = `${data.page} з ${data.total_pages}`;
+    })
+    .catch(error => console.log(error));
+}
 
-// listImages.innerHTML = liArray;
-
-// function createlist(array) {
-
-//     if (array.poster_path !== null) {src = pageUlr+array.poster_path;} else {src = notFound;}
-
-//     let li = `<li class="list-items">
-//         <img src="${src}" alt="" class="list-items__img">
-//         <div class="layout">
-//             <p class="list-items__title">${array.name}</p>
-//         </div>   
-//         </li>`
-
-//     return li;
-// }
-
-const btnSearch = document.querySelector('.search-film'); 
+function plaginationPages(totalPages, page) {
+  btnNumber.disabled = true;
+  if (totalPages === 1) {
+    btnPrev.disabled = true;
+    btnNext.disabled = true;
+    return;
+  }
+  totalPages >= 2 ? (btnNext.disabled = false) : null;
+  page === 1 ? (btnPrev.disabled = true) : (btnPrev.disabled = false);
+  totalPages === page ? (btnNext.disabled = true) : null;
+}
 
 
+
+
+getFilmsList();
+
+document.addEventListener('keydown', event => {
+  // console.log(event.code)
+  if (event.code === 'Enter') {
+    loadPage = false;
+    event.preventDefault();
+    getFilmsList();
+  }
+});
+btnPrev.addEventListener('click', () => getFilmsList('prev'));
+btnNext.addEventListener('click', () => getFilmsList('next'));
