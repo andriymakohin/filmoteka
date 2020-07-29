@@ -1,19 +1,16 @@
 .film {
   box-sizing: border-box;
-  width: 320px;
   margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
 
   @media screen and (min-width: 768px) and (max-width: 1024px) {
     display: flex;
-    width: 768px;
     padding-top: 24px;
   }
 
   @media screen and (min-width: 1025px) {
     display: flex;
-    width: 1024px;
     padding-top: 27px;
   }
 
@@ -50,7 +47,7 @@
   &__about {
     text-align: left;
     font-size: 17px;
-    color: #372c48;
+    color: $active-text-color;
     font-family: 'Roboto';
     font-weight: 500;
     line-height: 20px;
@@ -65,7 +62,7 @@
     font-size: 14px;
     font-family: 'Roboto';
     font-weight: 400;
-    color: #372c48;
+    color: $active-text-color;
     line-height: 18px;
     margin-left: 24px;
     margin-top: 17px;
@@ -80,7 +77,7 @@
   }
 
   &__addlist {
-    padding: 0 20px 0 20px;
+    padding: 0 20px 0 24px;
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -107,12 +104,12 @@
     display: flex;
   }
 
-  &__btn-img1 {
+  &__btn-video--img {
     margin-right: 6px;
     margin-top: 2px;
   }
 
-  &__btn-img2 {
+  &__btn-calendar--img {
     margin-right: 6px;
     margin-bottom: 1px;
   }
@@ -148,8 +145,8 @@
   font-weight: 400;
   font-family: 'Roboto';
   line-height: 27px;
-  color: #000;
   margin-top: 12px;
+  color: $black-base-color;
   border: none;
   display: flex;
   vertical-align: center;
@@ -160,5 +157,5 @@
 }
 
 .info__table-color {
-  background-color: #addad6;
+  background-color: $table-background-color;
 }
