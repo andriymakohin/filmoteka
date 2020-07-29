@@ -10,25 +10,25 @@ let value = '';
 let page = 1;
 let options = '';
 let totalPages = 0;
-let loadPage = true; // Змінюємо силку на загрузку
+let loadPage = true;
 
 function getFilmsList(event) {
   value = inputSearch.value;
-  event === 'next' ? (page += 1) : null;
 
   if (event === 'prev') {
     if (page <= 1) {
       return;
     }
     page -= 1;
-  } else {
-    page = 1;
   }
+  event === 'next' ? (page += 1) : null;
 
-  loadPage
-    ? (options = `${urlPopular}&page=${page}`)
-    : (options = `${urlSearch}&query=${value}&page=${page}`);
-
+  if (loadPage) {
+    options = `${urlPopular}&page=${page}`;
+  } else {
+    options = `${urlSearch}&query=${value}&page=${page}`;
+  }
+  console.log(loadPage);
   fetch(options)
     .then(response => response.json())
     .then(data => {
@@ -53,12 +53,12 @@ function plaginationPages(totalPages, page) {
 
 getFilmsList(); // Завантаження популярних фільмів
 
-document.addEventListener('keydown', event => {
-  // console.log(event.code)
-  if (event.code === 'Enter') {
-    loadPage = false; //Зміна силки на завантаження фільмів з пошуку
-    getFilmsList();
-  }
-});
+// document.addEventListener('keydown', event => {
+//   console.log(event.code)
+//   if (event.code === 'Enter') {
+//     loadPage = false;
+//     getFilmsList();
+//   }
+// });
 btnPrev.addEventListener('click', () => getFilmsList('prev'));
 btnNext.addEventListener('click', () => getFilmsList('next'));
