@@ -4,11 +4,11 @@ const notFound = 'https://blog.vverh.digital/wp-content/uploads/2020/06/oblojka-
 let src;
 let title;
 function postList(array) {
-    console.log(array)
-    let liArray = array.results.map(item => createlist(item)).join('');
+    // console.log(array)
+    let liArray = array.results.map(item => createList(item)).join('');
     listImages.innerHTML = liArray;
 }
-function createlist(array) {
+function createList(array) {
     if (array.poster_path !== null) {
         src = pageUlr+array.backdrop_path;
     } else if (array.poster_path) {
@@ -20,7 +20,7 @@ function createlist(array) {
         title = array.original_name
     };
     
-    let li = `<li class="list-items">
+    let li = `<li class="list-items" data-id="${array.id}">
         <img src="${src}" alt="" class="list-items__img">
         <div class="layout">
             <p class="list-items__title">${title}</p>
