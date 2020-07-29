@@ -2,35 +2,26 @@ const inputSearch = document.querySelector('.search-film');
 const btnNumber = document.querySelector('.page-number');
 const btnPrev = document.querySelector('.js-btn-prev');
 const btnNext = document.querySelector('.js-btn-next');
-const btnPages = document.querySelector('.pages');
 const myKey = '2f2663043f4e6e1c1ca2fc9d3ec31eb9';
-const urlSearch = 'https://api.themoviedb.org/3/search/collection?';
-const urlPopular = 'https://api.themoviedb.org/3/movie/popular?';
-const searchLang = 'en-US';
-let value;
+const urlSearch = `https://api.themoviedb.org/3/search/collection?api_key=${myKey}&language=${searchLang}`;
+const urlPopular = `https://api.themoviedb.org/3/movie/popular?api_key=${myKey}&language=${searchLang}`;
+const searchLang = 'en-US,uk-UA,ru-RU';
+let value = '';
 let page = 1;
-let options;
+let options = '';
 let totalPages = 0;
 let loadPage = true;
 
 function getFilmsList(event) {
   value = inputSearch.value;
-  if (event === 'next') {
-    page += 1;
-  } else if (event === 'prev') {
+  if (event === 'prev') {
     if (page <= 1) {
       return;
-    } else {
-      page -= 1;
     }
-  } else {
-    page = 1;
+    page -= 1;
   }
-  if (loadPage) {
-    options = `${urlPopular}api_key=${myKey}&language=${searchLang}&page=${page}`;
-  } else {
-    options = `${urlSearch}api_key=${myKey}&language=${searchLang}&query=${value}&page=${page}`;
-  }
+  event === 'next' ? (page += 1) : null;
+  loadPage? options = `${urlPopular}&page=${page}` : options = `${urlSearch}&query=${value}&page=${page}`;
   fetch(options)
     .then(response => response.json())
     .then(data => {
@@ -59,6 +50,7 @@ document.addEventListener('keydown', event => {
   // console.log(event.code)
   if (event.code === 'Enter') {
     loadPage = false;
+    event.preventDefault();
     getFilmsList();
   }
 });
