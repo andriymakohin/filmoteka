@@ -19,8 +19,6 @@ function getFilmsList(event) {
       return;
     }
     page -= 1;
-  } else {
-    page = 1;
   }
   event === 'next' ? (page += 1) : null;
   loadPage? options = `${urlPopular}&page=${page}` : options = `${urlSearch}&query=${value}&page=${page}`;
