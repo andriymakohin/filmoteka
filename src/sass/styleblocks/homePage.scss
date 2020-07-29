@@ -1,128 +1,126 @@
 .search {
-    box-shadow: 0px 13px 23px -13px rgba(0,0,0,0.41);
-    height: 60px;
+  box-shadow: 0px 13px 23px -13px rgba(0, 0, 0, 0.41);
+  height: 60px;
 }
 
-.search-form{
-    display: flex;
-    justify-content: center;
-    padding-top: 17px;
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding-top: 17px;
 }
 
 input.search-film {
-    width: 260px;
-    font-size: 14px;
-    border: none;
-    border-bottom: 2px solid #9c99a5;
-    font-family: 'Roboto Regular', sans-serif;
-    src: '../fonts/roboto/Roboto-Regular.woff';
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
-    padding-bottom: 3px;
+  width: 260px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid #9c99a5;
+  font-family: 'Roboto Regular', sans-serif;
+  src: '../fonts/roboto/Roboto-Regular.woff';
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  padding-bottom: 3px;
 }
 
 .list {
-    margin-top: 20px;
-    list-style: none;
+  margin-top: 20px;
+  list-style: none;
 }
 
 .list-items {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .list-items__img {
-    width: 298px;
-    height: 156px;
-    object-fit: cover;
-    object-position: 100% 0;
-    border-radius: 10px;
-    position: absolute;
+  width: 298px;
+  height: 156px;
+  object-fit: cover;
+  object-position: 100% 0;
+  border-radius: 10px;
+  position: absolute;
 }
 
 .layout {
-    top: 0;
-    left: 0;
-    position: relative;
-    background: linear-gradient(0deg, rgba(35,31,32,1) 11%, rgba(71,71,75,0) 82%);
-    height: 156px;
-    width: 298px;
-    border-radius: 10px;
+  top: 0;
+  left: 0;
+  position: relative;
+  background: linear-gradient(
+    0deg,
+    rgba(35, 31, 32, 1) 11%,
+    rgba(71, 71, 75, 0) 82%
+  );
+  height: 156px;
+  width: 298px;
+  border-radius: 10px;
 }
 
 .list-items__title {
-    position: relative;
-    top: 80%;
-    left: 3%;
-    color: #fff;
-    font-family: 'Roboto Medium', sans-serif;
-    src: '../fonts/roboto/Roboto-Medium.woff';
-    font-weight: 500;
-    font-style: normal;
-    font-size: 14px;
+  position: relative;
+  top: 80%;
+  left: 3%;
+  color: #fff;
+  font-family: 'Roboto Medium', sans-serif;
+  src: '../fonts/roboto/Roboto-Medium.woff';
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
 }
-
 
 // ===================== TABLET ==============
 
-
 @media (min-width: 768px) {
-
-
-    .list{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .list-items__img {
-        width: 346px;
-        height: 180px;
-    }
-    .layout{
-        width: 346px;
-        height: 180px;
-    }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-
+  .list-items__img {
+    width: 346px;
+    height: 180px;
+  }
+  .layout {
+    width: 346px;
+    height: 180px;
+  }
+}
 
 // =================== DESKTOP =================
 
 @media (min-width: 1024px) {
-
-    .list{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-    .list-items__img {
-        width: 446px;
-        height: 246px;
-    }
-    .layout{
-        width: 446px;
-        height: 246px;
-    }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
+  .list-items__img {
+    width: 446px;
+    height: 246px;
+  }
+  .layout {
+    width: 446px;
+    height: 246px;
+  }
+}
 
+.pages {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
-
-  
-  .pages{
-      display: flex;
-      justify-content: center;
-      margin: auto;
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
-                      
-    .btn {
-      padding: 10px 15px;
-      border: 1px solid #9c99a5;
-      border-radius: 3px;
-      font-family: 'Roboto Regular', sans-serif;
-      src: '../fonts/roboto/Roboto-Regular.woff';
-      font-weight: 500;
-      font-size: 14px;
-      font-style: normal;
-      color: $disabled-text-color;
-    }
+.btn {
+  padding: 10px 15px;
+  border: 1px solid #9c99a5;
+  border-radius: 3px;
+  font-family: 'Roboto Regular', sans-serif;
+  src: '../fonts/roboto/Roboto-Regular.woff';
+  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+  color: $disabled-text-color;
+}
+.btn:not([disabled]) {
+  cursor: pointer;
+}
