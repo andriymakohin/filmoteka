@@ -1,8 +1,6 @@
 const addQueueButton = document.querySelector('#js-addQueueButton');
 const addWatchedButton = document.querySelector('#js-addWatchedButton');
 
-
-
 function toggleToQueue() {
     let filmsQueueArr = [];
     let localStorageData = localStorage.getItem('filmsQueue');
@@ -34,18 +32,20 @@ function toggleToWatched() {
     monitorButtonStatusText();
 }
 
-//const setPoster = `https://image.tmdb.org/t/p/w500${selectFilm.poster_path}`;
-
-
 function showDetails(selectFilm) {
+    console.log(selectFilm);
     let img = document.querySelector('#js-detailsImg');
-    img.setAttribute(`https://image.tmdb.org/t/p/w500/${selectFilm.poster_path}`)
+    img.src = `https://image.tmdb.org/t/p/w500${selectFilm.poster_path}`;
+
 
     let title = document.querySelector('#js-detailsTitle');
-    title.textContent = selectFilm.title;
+    title.textContent = selectFilm.data;
 
     let vote = document.querySelector('#js-vote');
-    vote.textContent = selectFilm.vote;
+    vote.textContent = selectFilm.vote_average;
+
+    let voteCount = document.querySelector('#js-voteCount');
+    voteCount.textContent = selectFilm.vote_count;
 
     let popularity = document.querySelector('#js-popularity');
     popularity.textContent = selectFilm.popularity;
@@ -54,7 +54,16 @@ function showDetails(selectFilm) {
     originalTitle.textContent = selectFilm.original_title;
 
     let genre = document.querySelector('#js-genre');
-    genre.textContent = selectFilm.genre;
+    genre.innerHTML = selectFilm.genres.map(item => `<p>${item.name}</p>`).join('');
+
+    let releaseDate = document.querySelector('#js-releaseDate');
+    releaseDate.textContent = selectFilm.release_date;
+
+
+
+
+    let runTime = document.querySelector('#js-runTime');
+    runTime.textContent = selectFilm.runtime;
 
     let textDetails = document.querySelector('#js-textDetails');
     textDetails.textContent = selectFilm.overview;
@@ -77,4 +86,18 @@ function monitorButtonStatusText() {
             ? addWatchedButton.textContent = "Delete from watched"
             : addWatchedButton.textContent = "Add to watched";
 }
+
+document.addEventListener('click', event => {
+    if (event.target.parentNode.getAttribute('class') === 'list-items') { getDetails(event.target.parentNode.getAttribute('data-id')) }
+});
+
+function getDetails(id) {
+    options = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=${searchLang}&append_to_response=image`;
+    fetch(options)
+        .then(response => response.json())
+        .then(data => showDetails(data))
+        .catch(error => console.log(error));
+    console.log(id);
+}
+
 

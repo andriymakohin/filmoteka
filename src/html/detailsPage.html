@@ -1,13 +1,6 @@
 <section class="film container">
   <div class="film__img-box">
-    <img
-      class="film__img"
-      id="js-detailsImg"
-      src=" "
-      alt="film poster"
-      width="0"
-      height="0"
-    />
+    <img class="film__img" id="js-detailsImg" src=" " alt="film poster" width="400" height="200" />
   </div>
   <div class="film__info">
     <h2 class="film__name" id="js-detailsTitle">Film name</h2>
@@ -15,6 +8,10 @@
       <div class="info__table-item info__table-color">
         <p class="info__table-col">vote/votes</p>
         <p class="info__table-col" id="js-vote"></p>
+      </div>
+      <div class="info__table-item info__table-color">
+        <p class="info__table-col">vote count</p>
+        <p class="info__table-col" id="js-voteCount"></p>
       </div>
       <div class="info__table-item">
         <p class="info__table-col">popularity</p>
@@ -28,30 +25,31 @@
         <p class="info__table-col">genre</p>
         <p class="info__table-col" id="js-genre"></p>
       </div>
+      <div class="info__table-item">
+        <p class="info__table-col">release date</p>
+        <p class="info__table-col" id="js-releaseDate"></p>
+      </div>
+      <div class="info__table-item">
+        <p class="info__table-col">runtime minutes</p>
+        <p class="info__table-col" id="js-runTime"></p>
+      </div>
+
+
+
     </div>
     <h3 class="film__about">About</h3>
     <p class="film__about-text" id="js-textDetails"></p>
     <ul class="film__addlist">
       <li class="film__btn-list">
         <button class="film__btn film__btn--favorite" id="js-addWatchedButton">
-          <img
-            class="film__btn-video--img"
-            src="./images/details-page-icon/video.jpg"
-            alt="video"
-            width="15"
-            height="10"
-          />Add to wached
+          <img class="film__btn-video--img" src="./images/details-page-icon/video.jpg" alt="video" width="15"
+            height="10" />Add to wached
         </button>
       </li>
       <li>
         <button class="film__btn film__btn--queue" id="js-addQueueButton">
-          <img
-            class="film__btn-calendar--img"
-            src="./images/details-page-icon/calendar.jpg"
-            alt="calendar"
-            width="14"
-            height="14"
-          />Add to queue
+          <img class="film__btn-calendar--img" src="./images/details-page-icon/calendar.jpg" alt="calendar" width="14"
+            height="14" />Add to queue
         </button>
       </li>
     </ul>
