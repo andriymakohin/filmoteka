@@ -2,10 +2,10 @@ const inputSearch = document.querySelector('.search-film');
 const btnNumber = document.querySelector('.page-number');
 const btnPrev = document.querySelector('.js-btn-prev');
 const btnNext = document.querySelector('.js-btn-next');
-const myKey = '2f2663043f4e6e1c1ca2fc9d3ec31eb9';
+const API_KEY = '2f2663043f4e6e1c1ca2fc9d3ec31eb9';
 const searchLang = 'en-US,uk-UA,ru-RU';
-const urlSearch = `https://api.themoviedb.org/3/search/collection?api_key=${myKey}&language=${searchLang}`;
-const urlPopular = `https://api.themoviedb.org/3/movie/popular?api_key=${myKey}&language=${searchLang}`;
+const urlSearch = `https://api.themoviedb.org/3/search/collection?api_key=${API_KEY}&language=${searchLang}`;
+const urlPopular = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${searchLang}`;
 let value = '';
 let page = 1;
 let options = '';
@@ -34,18 +34,11 @@ function getFilmsList(event) {
 
 function plaginationPages(totalPages, page) {
   btnNumber.disabled = true;
-  if (totalPages === 1) {
-    btnPrev.disabled = true;
-    btnNext.disabled = true;
-    return;
-  }
+  if (totalPages === 1) {btnPrev.disabled = true; btnNext.disabled = true; return;}
   totalPages >= 2 ? (btnNext.disabled = false) : null;
   page === 1 ? (btnPrev.disabled = true) : (btnPrev.disabled = false);
   totalPages === page ? (btnNext.disabled = true) : null;
 }
-
-
-
 
 getFilmsList();
 

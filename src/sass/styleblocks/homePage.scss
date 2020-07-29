@@ -20,6 +20,12 @@ input.search-film {
   font-style: normal;
   text-align: center;
   padding-bottom: 3px;
+  outline: 0;
+  transition: all .2s linear;
+}
+input.search-film:hover {
+  border-color: $primary-color;
+  transform: scale(1.1);
 }
 
 .list {
@@ -28,9 +34,14 @@ input.search-film {
 }
 
 .list-items {
-  margin-bottom: 10px;
+margin-bottom: 10px;
+transition: all .2s linear;
+cursor: pointer;
 }
-
+.list-items:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
 .list-items__img {
   width: 298px;
   height: 156px;
@@ -57,7 +68,6 @@ input.search-film {
 .list-items__title {
   position: relative;
   top: 80%;
-  left: 3%;
   color: #fff;
   font-family: 'Roboto Medium', sans-serif;
   src: '../fonts/roboto/Roboto-Medium.woff';
@@ -67,7 +77,7 @@ input.search-film {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  padding-right: 10px;
+  padding: 0 10px;
 }
 
 // ===================== TABLET ==============
