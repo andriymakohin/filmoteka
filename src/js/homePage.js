@@ -1,5 +1,5 @@
 const pageUlr = 'https://image.tmdb.org/t/p/w500';
-const listImages = document.querySelector('.js-list');
+const listFilms = document.querySelector('.js-list');
 const notFound = 'https://blog.vverh.digital/wp-content/uploads/2020/06/oblojka-404.png';
 let src;
 let title;
@@ -10,21 +10,17 @@ function postList(array) {
 }
 function createList(array) {
     if (array.poster_path !== null) {
-        src = pageUlr+array.backdrop_path;
-    } else if (array.poster_path) {
-        src = array.poster_path;
-    } else { src = notFound;}
-    if (array.original_title) {
-        title = array.original_title
+        src = pageUlr+array.poster_path;
     } else {
-        title = array.original_name
-    };
+        src = notFound;
+    }
     
-    let li = `<li class="list-items">
+    let markup = `<li class="list-items" data-id="${array.id}">
         <img src="${src}" alt="" class="list-items__img">
         <div class="layout">
-            <p class="list-items__title">${title}</p>
+            <p class="list-items__title">${array.name}</p>
         </div>   
         </li>`
-    return li;
+
+    return markup;
 }
