@@ -15,7 +15,9 @@ const refs = {
     thumbs: document.querySelector('.btns'),
     movieWrap: document.querySelector('.movies-wrap'),
   };
-
+  const list = document.querySelector('[data-page="home"]');
+  list.addEventListener('click',activeDetailsPage);
+  list.innerHTML = '';
   let selectFilm;
 
 function activeHomePage() {
@@ -56,22 +58,22 @@ function activeDetailsPage(e) {
   refs.filmLibraryPageNone.classList.add('display-section');
   refs.detailsPageNone.classList.remove('display-section');
 
-  if (itsLibraryFilm) {
-    selectFilm =
-      JSON.parse(localStorage.getItem('filmsQueue')).find(
-        obj => obj.id === Number(movieId),
-      ) ||
-      JSON.parse(localStorage.getItem('filmsWatched')).find(
-        obj => obj.id === Number(movieId),
-      );
-  } else {
-    selectFilm = renderFilms.find(film => film.id === Number(movieId));
-  }
-  monitorButtonStatusText();
-  showDetails(selectFilm);
+  // if (itsLibraryFilm) {
+  //   selectFilm =
+  //     JSON.parse(localStorage.getItem('filmsQueue')).find(
+  //       obj => obj.id === Number(movieId),
+  //     ) ||
+  //     JSON.parse(localStorage.getItem('filmsWatched')).find(
+  //       obj => obj.id === Number(movieId),
+  //     );
+  // } else {
+  //   selectFilm = renderFilms.find(film => film.id === Number(movieId));
+  // }
+  // monitorButtonStatusText();
+  // showDetails(selectFilm);
 
-  refs.addToQueue.addEventListener('click', toggleToQueue);
-  refs.addToWatched.addEventListener('click', toggleToWatched);
+  // refs.addToQueue.addEventListener('click', toggleToQueue);
+  // refs.addToWatched.addEventListener('click', toggleToWatched);
 }
 
 activeHomePage();
