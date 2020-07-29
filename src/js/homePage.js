@@ -5,10 +5,10 @@ let src;
 let title;
 function postList(array) {
     console.log(array)
-    let liArray = array.results.map(item => createlist(item)).join('');
+    let liArray = array.results.map(item => createList(item)).join('');
     listImages.innerHTML = liArray;
 }
-function createlist(array) {
+function createList(array) {
     if (array.poster_path !== null) {
         src = pageUlr+array.backdrop_path;
     } else if (array.poster_path) {
