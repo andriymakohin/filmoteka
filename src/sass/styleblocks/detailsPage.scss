@@ -102,6 +102,13 @@
     font-family: 'Roboto';
     font-weight: 400;
     display: flex;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      border-bottom: 1px solid $primary-color;
+      transition: 0.5s;
+    }
   }
 
   &__btn-video--img {
