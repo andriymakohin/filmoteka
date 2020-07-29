@@ -57,9 +57,13 @@ input.search-film {
     color: #fff;
     font-family: 'Roboto Medium', sans-serif;
     src: '../fonts/roboto/Roboto-Medium.woff';
-    font-weight: 500;
+    font-weight: 900;
     font-style: normal;
-    font-size: 14px;
+    font-size: 26px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 10px;
 }
 
 
