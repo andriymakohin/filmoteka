@@ -2,33 +2,35 @@ const inputSearch = document.querySelector('.search-film');
 const btnNumber = document.querySelector('.page-number');
 const btnPrev = document.querySelector('.js-btn-prev');
 const btnNext = document.querySelector('.js-btn-next');
-const API_KEY = '2f2663043f4e6e1c1ca2fc9d3ec31eb9';
-const searchLang = 'en-US,uk-UA,ru-RU'; // Мова загрузки фільмів
-const urlPopular = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${searchLang}`;
-const urlSearch = `https://api.themoviedb.org/3/search/collection?api_key=${API_KEY}&language=${searchLang}`;
-let value = '';
+const btnPages = document.querySelector('.pages');
+const myKey = '2f2663043f4e6e1c1ca2fc9d3ec31eb9';
+const urlSearch = 'https://api.themoviedb.org/3/search/collection?';
+const urlPopular = 'https://api.themoviedb.org/3/movie/popular?';
+const searchLang = 'en-US';
+let value;
 let page = 1;
-let options = '';
+let options;
 let totalPages = 0;
 let loadPage = true;
 
 function getFilmsList(event) {
   value = inputSearch.value;
-
-  if (event === 'prev') {
+  if (event === 'next') {
+    page += 1;
+  } else if (event === 'prev') {
     if (page <= 1) {
       return;
+    } else {
+      page -= 1;
     }
-    page -= 1;
-  }
-  event === 'next' ? (page += 1) : null;
-
-  if (loadPage) {
-    options = `${urlPopular}&page=${page}`;
   } else {
-    options = `${urlSearch}&query=${value}&page=${page}`;
+    page = 1;
   }
-  console.log(loadPage);
+  if (loadPage) {
+    options = `${urlPopular}api_key=${myKey}&language=${searchLang}&page=${page}`;
+  } else {
+    options = `${urlSearch}api_key=${myKey}&language=${searchLang}&query=${value}&page=${page}`;
+  }
   fetch(options)
     .then(response => response.json())
     .then(data => {
@@ -51,14 +53,15 @@ function plaginationPages(totalPages, page) {
   totalPages === page ? (btnNext.disabled = true) : null;
 }
 
-getFilmsList(); // Завантаження популярних фільмів
+getFilmsList();
 
-// document.addEventListener('keydown', event => {
-//   console.log(event.code)
-//   if (event.code === 'Enter') {
-//     loadPage = false;
-//     getFilmsList();
-//   }
-// });
+document.addEventListener('keydown', event => {
+  // console.log(event.code)
+  if (event.code === 'Enter') {
+    loadPage = false;
+    event.preventDefault();
+    getFilmsList();
+  }
+});
 btnPrev.addEventListener('click', () => getFilmsList('prev'));
 btnNext.addEventListener('click', () => getFilmsList('next'));
