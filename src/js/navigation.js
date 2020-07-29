@@ -18,7 +18,8 @@ const refs = {
   const list = document.querySelector('[data-page="home"]');
   list.addEventListener('click',activeDetailsPage);
   list.innerHTML = '';
-  let selectFilm;
+  let selectFilm, renderFilms;
+  renderFilms = [...array.results];
 
 function activeHomePage() {
   refs.movieWrap.classList.remove('display-section');
@@ -38,13 +39,13 @@ function activeLibraryPage() {
   refs.filmLibraryPageNone.classList.remove('display-section');
   refs.navbarHome.classList.remove('header-nav__item--active');
   refs.navbarLibrary.classList.add('header-nav__item--active');
-//   drawQueueFilmList();
+  drawQueueFilmList();
 
   refs.queueBtn.classList.add('header-search__item--active');
-//   refs.favoriteBtn.addEventListener('click', drawWatchedFilmList);
+  refs.favoriteBtn.addEventListener('click', drawWatchedFilmList);
 
-//   refs.addToQueue.removeEventListener('click', toggleToQueue);
-//   refs.addToWatched.removeEventListener('click', toggleToWatched);
+  // refs.addToQueue.removeEventListener('click', toggleToQueue);
+  // refs.addToWatched.removeEventListener('click', toggleToWatched);
 }
 
 function activeDetailsPage(e) {
@@ -58,17 +59,17 @@ function activeDetailsPage(e) {
   refs.filmLibraryPageNone.classList.add('display-section');
   refs.detailsPageNone.classList.remove('display-section');
 
-  // if (itsLibraryFilm) {
-  //   selectFilm =
-  //     JSON.parse(localStorage.getItem('filmsQueue')).find(
-  //       obj => obj.id === Number(movieId),
-  //     ) ||
-  //     JSON.parse(localStorage.getItem('filmsWatched')).find(
-  //       obj => obj.id === Number(movieId),
-  //     );
-  // } else {
-  //   selectFilm = renderFilms.find(film => film.id === Number(movieId));
-  // }
+  if (itsLibraryFilm) {
+    selectFilm =
+      JSON.parse(localStorage.getItem('filmsQueue')).find(
+        obj => obj.id === Number(movieId),
+      ) ||
+      JSON.parse(localStorage.getItem('filmsWatched')).find(
+        obj => obj.id === Number(movieId),
+      );
+  } else {
+    selectFilm = renderFilms.find(film => film.id === Number(movieId));
+  }
   // monitorButtonStatusText();
   // showDetails(selectFilm);
 
