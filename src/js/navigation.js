@@ -11,6 +11,7 @@ class navigation {
     this.formWrap = document.querySelector('.form-wrap');
     this.movieWrap = document.querySelector('.movies-wrap');
     this.list = document.querySelector('[data-page="home"]');
+    this.listLib = document.querySelector('[data-page="library"]');
     this.selectFilm = '';
   }
 
@@ -42,11 +43,13 @@ class navigation {
   init() {
     this.activeHomePage();
     this.list.addEventListener('click', () => this.activeDetailsPage());
+    this.listLib.addEventListener('click', () => this.activeDetailsPage());
     this.home_library[0].addEventListener('click', () => this.activeHomePage());
     this.home_library[1].addEventListener('click', () => this.activeLibraryPage());
     this.logo.addEventListener('click', () => this.activeHomePage());
     this.favoriteBtn.addEventListener('click', () => drawFilmList('filmsWatched'));
     this.queueBtn.addEventListener('click', () => drawFilmList('filmsQueue'));
+   
   }
 }
 
