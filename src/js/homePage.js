@@ -3,8 +3,7 @@ class loadList {
     constructor() {
         this.pageUlr = 'https://image.tmdb.org/t/p/w500';
         this.listImages = document.querySelector('.js-list');
-        this.notFound = '../images/404.png';
-        this.src = this.notFound;
+        this.src = '../images/404.png';
         this.title = "";
     }
     postList(array) {
