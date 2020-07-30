@@ -41,6 +41,10 @@ function getUrl(params, page) {
   if (params === 'top') {typeUrl = 'movie/top_rated'; listMuvieActive(params); }
   if (params === 'upcoming') {typeUrl = 'movie/upcoming'; listMuvieActive(params); }
 
+  if (params === 'playing' || params === 'popular' || params === 'top' || params === 'upcoming' || params === 'search') {
+    localStorage.setItem('loadPage', params);
+  };
+
   return `${urlApi}${typeUrl}?api_key=${API_KEY}&language=${searchLang}&page=${page}`;
 }
 
@@ -61,7 +65,9 @@ function plaginationPages(totalPages, page) {
   totalPages === page ? (btnNext.disabled = true) : null;
 }
 
-getFilmsList('popular');
+
+
+getFilmsList(localStorage.getItem('loadPage')? localStorage.getItem('loadPage') : 'popular');
 
 document.addEventListener('keydown', event => {
   // console.log(event)
