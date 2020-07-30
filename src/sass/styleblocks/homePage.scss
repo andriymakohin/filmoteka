@@ -20,6 +20,34 @@ input.search-film {
   font-style: normal;
   text-align: center;
   padding-bottom: 3px;
+  outline: 0;
+  transition: all .2s linear;
+}
+input.search-film:hover {
+  border-color: $primary-color;
+  transform: scale(1.1);
+}
+
+.listMuvie {
+  display: flex;
+  justify-content: center;
+}
+
+.listMuvie__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #9c99a5;
+  width: 140px;
+  height: 40px;
+  color: $active-text-color;
+  cursor: pointer;
+}
+
+.listMuvie__item--active {
+  background-color: $primary-color;
+  border-bottom: 2px solid $primary-color;
+  color: $item-text-color;
 }
 
 .list {
@@ -28,9 +56,14 @@ input.search-film {
 }
 
 .list-items {
-  margin-bottom: 10px;
+margin-bottom: 10px;
+transition: all .2s linear;
+cursor: pointer;
 }
-
+.list-items:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
 .list-items__img {
   width: 298px;
   height: 156px;
@@ -57,7 +90,6 @@ input.search-film {
 .list-items__title {
   position: relative;
   top: 80%;
-  left: 3%;
   color: #fff;
   font-family: 'Roboto Medium', sans-serif;
   src: '../fonts/roboto/Roboto-Medium.woff';
@@ -67,7 +99,7 @@ input.search-film {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  padding-right: 10px;
+  padding: 0 10px;
 }
 
 // ===================== TABLET ==============
