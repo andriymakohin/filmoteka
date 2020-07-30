@@ -14,7 +14,6 @@ class details {
     this.addWatchedButton = document.querySelector('#js-addWatchedButton');
     this.filmsQueueArr = [];
     this.filmsWatchedArr = [];
-    
   };
   toggleToQueue() {
     this.filmObject = JSON.parse(localStorage.getItem('dataFilm'));

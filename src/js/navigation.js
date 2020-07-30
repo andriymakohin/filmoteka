@@ -45,8 +45,8 @@ class navigation {
     this.home_library[0].addEventListener('click', () => this.activeHomePage());
     this.home_library[1].addEventListener('click', () => this.activeLibraryPage());
     this.logo.addEventListener('click', () => this.activeHomePage());
-    this.favoriteBtn.addEventListener('click', () => drawFilmList('filmsWatched'));
-    this.queueBtn.addEventListener('click', () => drawFilmList('filmsQueue'));
+    this.favoriteBtn.addEventListener('click', () => filmLibraryPage.drawFilmList('filmsWatched'));
+    this.queueBtn.addEventListener('click', () => filmLibraryPage.drawFilmList('filmsQueue'));
   }
 }
 
