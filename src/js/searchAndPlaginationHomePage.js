@@ -41,14 +41,15 @@ function setPrevNext(params) {
 
 function getUrl(params, page) {
   if (params === 'search') {typeUrl = 'search/collection'; listMuvie.style.display = "none"}
-  if (params === 'playing') {typeUrl = 'movie/now_playing'; listMuvieActive(params); }
-  if (params === 'popular') {typeUrl = 'movie/popular'; listMuvieActive(params); }
-  if (params === 'top') {typeUrl = 'movie/top_rated'; listMuvieActive(params); }
-  if (params === 'upcoming') {typeUrl = 'movie/upcoming'; listMuvieActive(params); }
+  params === 'playing'? typeUrl = 'movie/now_playing' : null;
+  params === 'popular'? typeUrl = 'movie/popular' : null;
+  params === 'top'? typeUrl = 'movie/top_rated' : null;
+  params === 'upcoming'? typeUrl = 'movie/upcoming' : null;
 
   if (params === 'playing' || params === 'popular' || params === 'top' || params === 'upcoming') {
     localStorage.setItem('loadPage', params);
     listMuvie.style.display = "flex"; 
+    listMuvieActive(params);
   };
 
   return `${urlApi}${typeUrl}?api_key=${API_KEY}&language=${searchLang}&page=${page}`;
