@@ -1,42 +1,46 @@
 const libraryList = document.querySelector('.library__list');
 const addToWatched = document.querySelector('.film__btn--favorite');
 const addToQueue = document.querySelector('.film__btn--queue');
-// const list = document.querySelector('.js-list');
-// console.log(list);
 
 addToWatched.addEventListener('click', addFavoriteMovieToLocalStorage);
-// addToQueue.addEventListener('click', createLibraryCardFunc);
+
+// addToQueue.addEventListener('click', addFavoriteMovieToLocalStorage);
+//при виклику кюе треба замінити лакал сторадж на  = filmsQueue
 
 function addFavoriteMovieToLocalStorage() {
-  if (localStorage.getItem('watchedMovie')) {
-    let obj = JSON.stringify([
-      JSON.parse(localStorage.getItem('watchedMovie')),
-      {
-        rgre: 'wwwwwww',
-      },
-    ]);
+  let filmObject = JSON.parse(localStorage.getItem('dataFilm'));
+  let newFilmObject = {
+    backdrop_path: filmObject.backdrop_path,
+    original_title: filmObject.original_title,
+    id: filmObject.id,
+    vote_average: filmObject.vote_average,
+  };
 
-    localStorage.setItem('watchedMovie', obj);
+  if (localStorage.getItem('filmsWatched')) {
+    let obj = JSON.parse(localStorage.getItem('filmsWatched'));
+
+    localStorage.setItem(
+      'filmsWatched',
+      JSON.stringify([...obj, newFilmObject]),
+    );
   } else {
-    localStorage.setItem('watchedMovie', JSON.stringify({ regre: 'regerg' }));
+    localStorage.setItem('filmsWatched', JSON.stringify([newFilmObject]));
   }
 }
+function drawWatchedFilmList() {
+  let movieMasyv = JSON.parse(localStorage.getItem('filmsWatched'));
+  movieMasyv = movieMasyv.map(obj => createLibraryCardFunc(obj)).join('');
+  libraryList.innerHTML = movieMasyv;
+}
 
-function removeFavoriteMovieFromLocalStorage() {}
+function createLibraryCardFunc(obj) {
+  let li = `<li class="list-items" data-id="${obj.id}">
+        <img src="https://image.tmdb.org/t/p/w500/${obj.backdrop_path}" alt="${obj.original_title}" class="list-items__img">
+        <div class="layout">
+            <p class="list-items__title">${obj.original_title}</p>
+        </div>   
+        </li>`;
+  return li;
+}
 
-// function createLibraryCardFunc(imgPath, filmTitle, movieId, voteAverage) {
-//   const libraryItem = document.createElement('li');
-//   const libraryImg = document.createElement('img');
-//   const libraryTitle = document.createElement('h3');
-//   const libraryDesc = document.createElement('p');
-//   libraryImg.setAttribute('src', imgPath);
-//   libraryTitle.textContent = filmTitle;
-//   libraryDesc.textContent = voteAverage;
-//   libraryItem.setAttribute('id', movieId);
-//   libraryItem.append(libraryImg, libraryTitle, libraryDesc);
-//   // console.log(libraryItem);
-//   // libraryList.insertAdjacentHTML('beforeend', libraryItem);
-//   return libraryItem;
-// }
-
-// createLibraryCardFunc();
+// function removeFavoriteMovieFromLocalStorage() {}
