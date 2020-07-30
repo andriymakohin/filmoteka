@@ -91,7 +91,7 @@ document.addEventListener('click', event => {
 });
 
 function getDetails(id) {
-  options = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=${searchLang}&append_to_response=image`;
+  options = `https://api.themoviedb.org/3/movie/${id}?api_key=${homePage.API_KEY}&language=${searchLang}&append_to_response=image`;
   fetch(options)
     .then(response => response.json())
     .then(data => showDetails(data))
