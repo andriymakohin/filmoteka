@@ -15,14 +15,7 @@ let typeUrl = 'movie/popular';
 
 function getFilmsList(event) {
   value = inputSearch.value;
-  event === 'playing' || event === 'popular' || event === 'top' || event === 'upcoming' || event === 'search'? page = 1 : null;
-  if (event === 'prev') {
-    if (page <= 1) {
-      return;
-    }
-    page -= 1;
-  }
-  event === 'next' ? (page += 1) : null;
+  event? page = 1 : null;
   !loadPage? options = `$&query=${value}` : null;
   fetch(getUrl(event, page) + options)
     .then(response => response.json())
@@ -32,6 +25,18 @@ function getFilmsList(event) {
       btnNumber.textContent = `${page} з ${data.total_pages}`;
     })
     .catch(error => console.log(error));
+}
+
+function setPrevNext(params) {
+  if (params === 'prev') {
+    if (page <= 1) {
+      return;
+    }
+    page -= 1;
+  }
+  params === 'next' ? (page += 1) : null;
+
+  getFilmsList()
 }
 
 function getUrl(params, page) {
@@ -77,8 +82,8 @@ document.addEventListener('keydown', event => {
     getFilmsList('search');
   }
 });
-btnPrev.addEventListener('click', () => getFilmsList('prev'));
-btnNext.addEventListener('click', () => getFilmsList('next'));
+btnPrev.addEventListener('click', () => setPrevNext('prev'));
+btnNext.addEventListener('click', () => setPrevNext('next'));
 document.addEventListener('click', event => {
   if (event.target.getAttribute('data-type')) {
     getFilmsList(event.target.getAttribute('data-type'));
