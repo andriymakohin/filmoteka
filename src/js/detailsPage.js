@@ -32,7 +32,7 @@ function toggleToWatched() {
 }
 
 function showDetails(selectFilm) {
-  console.log(selectFilm);
+  // console.log(selectFilm);
   let img = document.querySelector('#js-detailsImg');
   img.src = `https://image.tmdb.org/t/p/w500${selectFilm.poster_path}`;
 
@@ -91,10 +91,11 @@ document.addEventListener('click', event => {
 });
 
 function getDetails(id) {
-  options = `https://api.themoviedb.org/3/movie/${id}?api_key=${homePage.API_KEY}&language=${searchLang}&append_to_response=image`;
+  let options = `https://api.themoviedb.org/3/movie/${id}?api_key=${homePage.API_KEY}&language=${homePage.searchLang}&append_to_response=image`;
   fetch(options)
     .then(response => response.json())
-    .then(data => showDetails(data))
+    .then(data => {showDetails(data);
+                    let DATA = data;})
     .catch(error => console.log(error));
-  console.log(id);
+  // console.log(id);
 }

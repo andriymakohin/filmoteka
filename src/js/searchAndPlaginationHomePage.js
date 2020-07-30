@@ -98,3 +98,5 @@ class search {
 const homePage = new search('2f2663043f4e6e1c1ca2fc9d3ec31eb9');
 
 homePage.init();
+
+// alert(homePage.API_KEY)
