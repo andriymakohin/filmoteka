@@ -3,9 +3,7 @@ const addToWatched = document.querySelector('.film__btn--favorite');
 const addToQueue = document.querySelector('.film__btn--queue');
 
 addToWatched.addEventListener('click', addFavoriteMovieToLocalStorage);
-
 // addToQueue.addEventListener('click', addWatchedMovieToLocalStorage);
-//при виклику кюе треба замінити лакал сторадж на  = filmsQueue
 
 function addFavoriteMovieToLocalStorage() {
   let filmObject = JSON.parse(localStorage.getItem('dataFilm'));
