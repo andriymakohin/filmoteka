@@ -19,19 +19,12 @@ function activeHomePage() {
   refs.detailsPageNone.classList.add('display-section');
   refs.filmLibraryPageNone.classList.add('display-section');
   refs.formWrap.classList.remove('display-section');
-  // refs.addToQueue.removeEventListener('click', toggleToQueue);
-  // refs.addToWatched.removeEventListener('click', toggleToWatched);
 }
 
 function activeLibraryPage() {
   refs.detailsPageNone.classList.add('display-section');
   refs.movieWrap.classList.add('display-section');
   refs.filmLibraryPageNone.classList.remove('display-section');
-  refs.favoriteBtn.addEventListener('click', drawWatchedFilmList);
-  // drawQueueFilmList();
-
-  // refs.addToQueue.removeEventListener('click', toggleToQueue);
-  // refs.addToWatched.removeEventListener('click', toggleToWatched);
 }
 
 function activeDetailsPage() {
@@ -39,11 +32,11 @@ function activeDetailsPage() {
   refs.movieWrap.classList.add('display-section');
   refs.filmLibraryPageNone.classList.add('display-section');
   refs.detailsPageNone.classList.remove('display-section');
-  // monitorButtonStatusText();
+  // monitorButtonStatusText(selectFilm);
   // showDetails(selectFilm);
 
-  // refs.addToQueue.addEventListener('click', toggleToQueue);
-  // refs.addToWatched.addEventListener('click', toggleToWatched);
+  refs.addToQueue.addEventListener('click', detailsPage.toggleToQueue);
+  refs.addToWatched.addEventListener('click', detailsPage.toggleToWatched);
 }
 
 activeHomePage();
