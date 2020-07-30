@@ -19,10 +19,11 @@ class navigation {
     this.detailsPageNone.classList.add('display-section');
     this.filmLibraryPageNone.classList.add('display-section');
     this.formWrap.classList.remove('display-section');
+
   }
   activeLibraryPage() {
     this.detailsPageNone.classList.add('display-section');
-    this.detailsPageNone.classList.add()
+    this.detailsPageNone.classList.add('display-section')
     this.movieWrap.classList.add('display-section');
     this.filmLibraryPageNone.classList.remove('display-section');
   }
@@ -34,8 +35,8 @@ class navigation {
     // monitorButtonStatusText(selectFilm);
     // showDetails(selectFilm);
   
-    this.addToQueue.addEventListener('click', detailsPage.toggleToQueue);
-    this.addToWatched.addEventListener('click', detailsPage.toggleToWatched);
+    this.addToQueue.addEventListener('click', () => detailsPage.toggleToQueue());
+    this.addToWatched.addEventListener('click', () => detailsPage.toggleToWatched());
   }
 
   init() {
