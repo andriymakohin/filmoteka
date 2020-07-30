@@ -94,8 +94,7 @@ function getDetails(id) {
   let options = `https://api.themoviedb.org/3/movie/${id}?api_key=${homePage.API_KEY}&language=${homePage.searchLang}&append_to_response=image`;
   fetch(options)
     .then(response => response.json())
-    .then(data => {showDetails(data);
-                    let DATA = data;})
+    .then(data => {showDetails(data); localStorage.setItem('dataFilm', JSON.stringify(data));})
     .catch(error => console.log(error));
   // console.log(id);
 }
