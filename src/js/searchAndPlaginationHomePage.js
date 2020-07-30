@@ -56,7 +56,7 @@ function getUrl(params, page) {
 }
 
 function listMuvieActive(params) {
-  document.querySelector('.listMuvie__item--active').classList.remove('listMuvie__item--active');
+  document.querySelector('.listMuvie__item--active')? document.querySelector('.listMuvie__item--active').classList.remove('listMuvie__item--active') : null;
   document.querySelector('.listMuvie__item[data-type="'+params+'"]').classList.add('listMuvie__item--active');
 }
 
