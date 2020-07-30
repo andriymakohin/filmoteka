@@ -23,7 +23,7 @@ class search {
     fetch(this.getUrl(event) + this.options)
       .then(response => response.json())
       .then(data => {
-        postList(data);
+        loadPage.postList(data);
         this.plaginationPages(data.total_pages, this.page);
         this.btnNumber.textContent = `${this.page} з ${data.total_pages}`;
       })
@@ -78,7 +78,6 @@ class search {
     this.getFilmsList(localStorage.getItem('loadPage')? localStorage.getItem('loadPage') : 'popular');
 
     document.addEventListener('keydown', event => {
-      // console.log(event)
       if (event.keyCode === 13) {
         this.setloadPage = false;
         event.preventDefault();
@@ -98,5 +97,3 @@ class search {
 const homePage = new search('2f2663043f4e6e1c1ca2fc9d3ec31eb9');
 
 homePage.init();
-
-// alert(homePage.API_KEY)

@@ -53,22 +53,21 @@ class details {
     this.monitorButtonStatusText(selectFilm);
   }
   monitorButtonStatusText(selectFilm) {
+    this.addQueueButton.textContent = 'Add to queue';
+    this.addQueueButton.setAttribute('data-film', 'add')
+    this.addWatchedButton.textContent = 'Add to watched';
+    this.addWatchedButton.setAttribute('data-film', 'add')
+
     this.localStorageFilmsQueue = localStorage.getItem('filmsQueue');
-    if (JSON.parse(this.localStorageFilmsQueue).find(el => el.id === selectFilm.id)) {
-      this.addQueueButton.setAttribute('data-film', 'delete')
-      this.addQueueButton.textContent = 'Delete from queue';
-    } else {
-      this.addQueueButton.setAttribute('data-film', 'add')
-      this.addQueueButton.textContent = 'Add to queue';
+    if (this.localStorageFilmsQueue && JSON.parse(this.localStorageFilmsQueue).find(el => el.id === selectFilm.id)){
+        this.addQueueButton.setAttribute('data-film', 'delete');
+        this.addQueueButton.textContent = 'Delete from queue';
     }
-     this.localStorageFilmsWatched = localStorage.getItem('filmsWatched');
-      if (JSON.parse(this.localStorageFilmsWatched).find(el => el.id === selectFilm.id)) {
-        this.addWatchedButton.setAttribute('data-film', 'delete')
-        this.addWatchedButton.textContent = 'Delete from watched';
-      } else {
-        this.addWatchedButton.setAttribute('data-film', 'add')
-        this.addWatchedButton.textContent = 'Add to watched';
-      }
+    this.localStorageFilmsWatched = localStorage.getItem('filmsWatched');
+    if (this.localStorageFilmsWatched && JSON.parse(this.localStorageFilmsWatched).find(el => el.id === selectFilm.id)){
+      this.addWatchedButton.setAttribute('data-film', 'delete');
+      this.addWatchedButton.textContent = 'Delete from watched';
+    }
   }
   getDetails(id) {
     this.options = `https://api.themoviedb.org/3/movie/${id}?api_key=${homePage.API_KEY}&language=${homePage.searchLang}&append_to_response=image`;
