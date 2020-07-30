@@ -28,6 +28,28 @@ input.search-film:hover {
   transform: scale(1.1);
 }
 
+.listMuvie {
+  display: flex;
+  justify-content: center;
+}
+
+.listMuvie__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #9c99a5;
+  width: 140px;
+  height: 40px;
+  color: $active-text-color;
+  cursor: pointer;
+}
+
+.listMuvie__item--active {
+  background-color: $primary-color;
+  border-bottom: 2px solid $primary-color;
+  color: $item-text-color;
+}
+
 .list {
   margin-top: 20px;
   list-style: none;

@@ -1,22 +1,31 @@
 <section class="movies-wrap">
-<div class="search">
+  <div class="search">
     <div class="container form-wrap">
-        <form class="search-form">
-            <input class="search-film" type="text" placeholder="Write movie name and click Enter">
-        </form>
+      <form class="search-form">
+        <input
+          class="search-film"
+          type="text"
+          placeholder="Write movie name and click Enter"
+        />
+      </form>
     </div>
-</div>
-<div class="container">
-    <ul class="list js-list" data-page="home">
-    </ul>
+  </div>
+  <div class="container">
+      <div class="listMuvie">
+        <div class="listMuvie__item" data-type="playing">Now playing </div>
+        <div class="listMuvie__item" data-type="popular">Popular</div>
+        <div class="listMuvie__item listMuvie__item--active" data-type="top">Top rated</div>
+        <div class="listMuvie__item" data-type="upcoming">Upcoming</div>
+      </div>
+
+    <ul class="list js-list" data-page="home"></ul>
 
     <div class="pages">
-
-        <div class="btns">
-            <button class="btn js-btn-prev">Prev</button>
-            <button class="btn page-number">1</button>
-            <button class="btn js-btn-next">Next</button>
-        </div>
+      <div class="btns">
+        <button class="btn js-btn-prev">Prev</button>
+        <button class="btn page-number">1</button>
+        <button class="btn js-btn-next">Next</button>
+      </div>
     </div>
-</div>
+  </div>
 </section>
