@@ -1,32 +1,7 @@
 const libraryList = document.querySelector('.library__list');
-const addToWatched = document.querySelector('.film__btn--favorite');
-const addToQueue = document.querySelector('.film__btn--queue');
 
-addToWatched.addEventListener('click', addFavoriteMovieToLocalStorage);
-// addToQueue.addEventListener('click', addWatchedMovieToLocalStorage);
-
-function addFavoriteMovieToLocalStorage() {
-  let filmObject = JSON.parse(localStorage.getItem('dataFilm'));
-  let newFilmObject = {
-    backdrop_path: filmObject.backdrop_path,
-    original_title: filmObject.original_title,
-    id: filmObject.id,
-    vote_average: filmObject.vote_average,
-  };
-
-  if (localStorage.getItem('filmsWatched')) {
-    let obj = JSON.parse(localStorage.getItem('filmsWatched'));
-
-    localStorage.setItem(
-      'filmsWatched',
-      JSON.stringify([...obj, newFilmObject]),
-    );
-  } else {
-    localStorage.setItem('filmsWatched', JSON.stringify([newFilmObject]));
-  }
-}
-function drawWatchedFilmList() {
-  let movieMasyv = JSON.parse(localStorage.getItem('filmsWatched'));
+function drawFilmList(params) {
+  let movieMasyv = JSON.parse(localStorage.getItem(params));
   movieMasyv = movieMasyv.map(obj => createLibraryCardFunc(obj)).join('');
   libraryList.innerHTML = movieMasyv;
 }

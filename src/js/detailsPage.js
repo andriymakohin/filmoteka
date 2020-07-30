@@ -14,30 +14,47 @@ class details {
     this.addWatchedButton = document.querySelector('#js-addWatchedButton');
     this.filmsQueueArr = [];
     this.filmsWatchedArr = [];
-  }
+    
+  };
   toggleToQueue() {
-
-    console.log('toggleToQueue');
-    // this.localStorageData = localStorage.getItem('filmsQueue');
-    // this.localStorageData !== null? this.filmsQueueArr.push(...JSON.parse(this.localStorageData)) : null;
-    // this.filmsQueueArr.find(el => el.id === this.selectFilm.id)? this.filmsQueueArr = this.filmsQueueArr.filter(el => el.id !== this.selectFilm.id) : this.filmsQueueArr.push(this.selectFilm);
-    // localStorage.setItem('filmsQueue', JSON.stringify(this.filmsQueueArr));
-    // this.monitorButtonStatusText();
+    this.filmObject = JSON.parse(localStorage.getItem('dataFilm'));
+    this.filmObjects = JSON.parse(localStorage.getItem('filmsQueue'));
+      if (this.filmObjects && this.filmObjects.find(item => item.id === this.filmObject.id)) {
+        this.deleteIndex = this.filmObjects.indexOf(this.filmObjects.find(item => item.id === this.filmObject.id));
+        this.filmObjects.splice(this.deleteIndex, 1);
+        localStorage.setItem('filmsQueue', JSON.stringify(this.filmObjects));
+        detailsPage.monitorButtonStatusText(this.filmObject);
+        return;
+    }
+    this.newFilmObject = { backdrop_path: this.filmObject.backdrop_path, original_title: this.filmObject.original_title, id: this.filmObject.id, vote_average: this.filmObject.vote_average};
+    if (this.filmObjects) {
+      this.obj = JSON.parse(localStorage.getItem('filmsQueue'));
+      localStorage.setItem('filmsQueue', JSON.stringify([...this.obj, this.newFilmObject]));
+    } else {
+      localStorage.setItem('filmsQueue', JSON.stringify([this.newFilmObject]));
   }
+  detailsPage.monitorButtonStatusText(this.filmObject);
+  };
   toggleToWatched() {
-    console.log('toggleToWatched');
-    // this.localStorageData = localStorage.getItem('filmsWatched');
-    // this.localStorageData !== null? this.filmsWatchedArr.push(...JSON.parse(this.localStorageData)) : null;
-    // if (this.filmsWatchedArr.find(el => el.id === this.selectFilm.id)) {
-    //   this.filmsWatchedArr = this.filmsWatchedArr.filter(el => el.id !== this.electFilm.id);
-    // } else {
-    //   this.filmsWatchedArr.push(this.selectFilm);
-    // }
-    // localStorage.setItem('filmsWatched', JSON.stringify(this.filmsWatchedArr));
-    // this.monitorButtonStatusText();
-  }
+      this.filmObject = JSON.parse(localStorage.getItem('dataFilm'));
+      this.filmObjects = JSON.parse(localStorage.getItem('filmsWatched'));
+        if (this.filmObjects && this.filmObjects.find(item => item.id === this.filmObject.id)) {
+          this.deleteIndex = this.filmObjects.indexOf(this.filmObjects.find(item => item.id === this.filmObject.id));
+          this.filmObjects.splice(this.deleteIndex, 1);
+          localStorage.setItem('filmsWatched', JSON.stringify(this.filmObjects));
+          detailsPage.monitorButtonStatusText(this.filmObject);
+          return;
+      }
+      this.newFilmObject = { backdrop_path: this.filmObject.backdrop_path, original_title: this.filmObject.original_title, id: this.filmObject.id, vote_average: this.filmObject.vote_average};
+      if (this.filmObjects) {
+        this.obj = JSON.parse(localStorage.getItem('filmsWatched'));
+        localStorage.setItem('filmsWatched', JSON.stringify([...this.obj, this.newFilmObject]));
+      } else {
+        localStorage.setItem('filmsWatched', JSON.stringify([this.newFilmObject]));
+    }
+    detailsPage.monitorButtonStatusText(this.filmObject);
+  };
   showDetails(selectFilm) {
-    // console.log(selectFilm);
     this.img.src = `https://image.tmdb.org/t/p/w500${selectFilm.poster_path}`;
     this.title.textContent = selectFilm.data;
     this.vote.textContent = selectFilm.vote_average;
@@ -51,39 +68,38 @@ class details {
     this.runTime.textContent = selectFilm.runtime;
     this.textDetails.textContent = selectFilm.overview;
     this.monitorButtonStatusText(selectFilm);
-  }
+  };
   monitorButtonStatusText(selectFilm) {
-    this.addQueueButton.textContent = 'Add to queue';
-    this.addQueueButton.setAttribute('data-film', 'add')
-    this.addWatchedButton.textContent = 'Add to watched';
-    this.addWatchedButton.setAttribute('data-film', 'add')
-
     this.localStorageFilmsQueue = localStorage.getItem('filmsQueue');
     if (this.localStorageFilmsQueue && JSON.parse(this.localStorageFilmsQueue).find(el => el.id === selectFilm.id)){
-        this.addQueueButton.setAttribute('data-film', 'delete');
         this.addQueueButton.textContent = 'Delete from queue';
+    } else {
+      this.addQueueButton.textContent = 'Add to queue';
     }
     this.localStorageFilmsWatched = localStorage.getItem('filmsWatched');
     if (this.localStorageFilmsWatched && JSON.parse(this.localStorageFilmsWatched).find(el => el.id === selectFilm.id)){
-      this.addWatchedButton.setAttribute('data-film', 'delete');
       this.addWatchedButton.textContent = 'Delete from watched';
+    } else {
+      this.addWatchedButton.textContent = 'Add to watched';
     }
-  }
+  };
   getDetails(id) {
     this.options = `https://api.themoviedb.org/3/movie/${id}?api_key=${homePage.API_KEY}&language=${homePage.searchLang}&append_to_response=image`;
     fetch(this.options)
       .then(response => response.json())
-      .then(data => {this.showDetails(data); localStorage.setItem('dataFilm', JSON.stringify(data));})
+      .then(data => {
+        this.showDetails(data); localStorage.setItem('dataFilm', JSON.stringify(data));})
       .catch(error => console.log(error));
-    // console.log(id);
-  }
+
+  };
   init(){
+    this.monitorButtonStatusText(1);
     document.addEventListener('click', event => {
       if (event.target.parentNode.getAttribute('class') === 'list-items') {
         this.getDetails(event.target.parentNode.getAttribute('data-id'));
       }
     });
-  }
+  };
 }
 
 const detailsPage = new details();
