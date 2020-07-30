@@ -11,6 +11,7 @@ function createLibraryCardFunc(obj) {
         <img src="https://image.tmdb.org/t/p/w500/${obj.backdrop_path}" alt="${obj.original_title}" class="list-items__img">
         <div class="layout">
             <p class="list-items__title">${obj.original_title}</p>
+            <span class ="list-items__rating">${obj.vote_average}</span>
         </div>   
         </li>`;
   return li;
