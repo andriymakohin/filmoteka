@@ -10,13 +10,13 @@ let value = '';
 let page = 1;
 let options = '';
 let totalPages = 0;
-let loadPage = true;
+let setloadPage = true;
 let typeUrl = 'movie/popular';
 
 function getFilmsList(event) {
   value = inputSearch.value;
   event? page = 1 : null;
-  !loadPage? options = `$&query=${value}` : null;
+  !setloadPage? options = `$&query=${value}` : null;
   fetch(getUrl(event, page) + options)
     .then(response => response.json())
     .then(data => {
@@ -46,8 +46,9 @@ function getUrl(params, page) {
   if (params === 'top') {typeUrl = 'movie/top_rated'; listMuvieActive(params); }
   if (params === 'upcoming') {typeUrl = 'movie/upcoming'; listMuvieActive(params); }
 
-  if (params === 'playing' || params === 'popular' || params === 'top' || params === 'upcoming' || params === 'search') {
+  if (params === 'playing' || params === 'popular' || params === 'top' || params === 'upcoming') {
     localStorage.setItem('loadPage', params);
+    listMuvie.style.display = "flex"; 
   };
 
   return `${urlApi}${typeUrl}?api_key=${API_KEY}&language=${searchLang}&page=${page}`;
@@ -71,21 +72,28 @@ function plaginationPages(totalPages, page) {
 }
 
 
+function loadPage() {
+  
+  getFilmsList(localStorage.getItem('loadPage')? localStorage.getItem('loadPage') : 'popular');
 
-getFilmsList(localStorage.getItem('loadPage')? localStorage.getItem('loadPage') : 'popular');
+  document.addEventListener('keydown', event => {
+    // console.log(event)
+    if (event.keyCode === 13 && inputSearch.value !== "") {
+      setloadPage = false;
+      event.preventDefault();
+      getFilmsList('search');
+    }
+  });
+  btnPrev.addEventListener('click', () => setPrevNext('prev'));
+  btnNext.addEventListener('click', () => setPrevNext('next'));
+  document.addEventListener('click', event => {
+    if (event.target.getAttribute('data-type')) {
+      getFilmsList(event.target.getAttribute('data-type'));
+    }
+  });
 
-document.addEventListener('keydown', event => {
-  // console.log(event)
-  if (event.keyCode === 13 && inputSearch.value !== "") {
-    loadPage = false;
-    event.preventDefault();
-    getFilmsList('search');
-  }
-});
-btnPrev.addEventListener('click', () => setPrevNext('prev'));
-btnNext.addEventListener('click', () => setPrevNext('next'));
-document.addEventListener('click', event => {
-  if (event.target.getAttribute('data-type')) {
-    getFilmsList(event.target.getAttribute('data-type'));
-  }
-});
+}
+
+loadPage();
+
+
