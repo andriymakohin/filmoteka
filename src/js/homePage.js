@@ -15,10 +15,10 @@ class loadList {
         array.poster_path? this.src = this.pageUlr+array.poster_path : null;
         array.original_title? this.title = array.original_title : this.title = array.original_name;
         
-        return `<li class="list-items" data-id="${array.id}">
-            <img src="${this.src}" alt="${this.title}" class="list-items__img">
-            <div class="layout">
-                <p class="list-items__title">${this.title}</p>
+        return `<li class="list__items" data-id="${array.id}">
+            <img src="${this.src}" alt="${this.title}" class="list__itemsImg">
+            <div class="list__layout">
+                <p class="list__itemsTitle">${this.title}</p>
             </div>   
             </li>`;
     }

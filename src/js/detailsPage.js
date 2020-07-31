@@ -94,7 +94,7 @@ class details {
   };
   init(){
     document.addEventListener('click', event => {
-      if (event.target.parentNode.getAttribute('class') === 'list-items') {
+      if (event.target.parentNode.getAttribute('class') === 'list__items') {
         this.getDetails(event.target.parentNode.getAttribute('data-id'));
       }
     });
