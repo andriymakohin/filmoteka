@@ -27,12 +27,13 @@
   transform: scale(1.1);
 }
 
-.listMuvie {
+.listMovie {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
-.listMuvie__item {
+.listMovie__item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +47,8 @@
   transition: 0.5s all;
 }
 
-.listMuvie__item--active,
-.listMuvie__item:hover {
+.listMovie__item--active,
+.listMovie__item:hover {
   background-color: $primary-color;
   border-bottom: 2px solid $primary-color;
   color: $item-text-color;

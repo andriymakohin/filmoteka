@@ -33,6 +33,7 @@
   cursor: pointer;
 }
 
+.library__item--active,
 .library__item:hover {
   background-color: $primary-color;
   border-bottom: 2px solid $primary-color;
