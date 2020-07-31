@@ -33,8 +33,7 @@ class navigation {
     this.movieWrap.classList.add('display-section');
     this.filmLibraryPageNone.classList.add('display-section');
     this.detailsPageNone.classList.remove('display-section');  
-    this.addToQueue.addEventListener('click', () => detailsPage.toggleToQueue());
-    this.addToWatched.addEventListener('click', () => detailsPage.toggleToWatched());
+    
   }
 
   init() {
