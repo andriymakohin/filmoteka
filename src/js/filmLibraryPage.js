@@ -4,14 +4,11 @@ class libraryPage {
     this.pageUlr = 'https://image.tmdb.org/t/p/w500/';
   }
   drawFilmList(params) {
-    this.libraryList.innerHTML = '';
-    this.movieMasyv = JSON.parse(localStorage.getItem(params));
-    
-    if (this.movieMasyv == null || this.movieMasyv.length === 0){
-      this.libraryList.innerHTML = "<p class='text-warning'>You do not have movies. Add them.</p>"
-    } else {
-      this.movieMasyv = this.movieMasyv.map(obj => this.createLibraryCardFunc(obj)).join('');
-      this.libraryList.innerHTML = this.movieMasyv;}
+    this.movieMasyv = JSON.parse(localStorage.getItem('films'+params));
+    this.libraryList.innerHTML = 'You do not have to '+params+' movies to watch. Add them.';
+    if (!this.movieMasyv) {return;}
+    this.movieMasyv = this.movieMasyv.map(obj => this.createLibraryCardFunc(obj)).join('');
+    this.libraryList.innerHTML = this.movieMasyv;
   }
   createLibraryCardFunc(obj) {
     obj.backdrop_path? this.src = this.pageUlr+obj.backdrop_path : null;

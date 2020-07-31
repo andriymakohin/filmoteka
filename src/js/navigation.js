@@ -32,7 +32,8 @@ class navigation {
   activeDetailsPage() {
     this.movieWrap.classList.add('display-section');
     this.filmLibraryPageNone.classList.add('display-section');
-    this.detailsPageNone.classList.remove('display-section');
+    this.detailsPageNone.classList.remove('display-section');  
+    
   }
 
   init() {
@@ -42,10 +43,10 @@ class navigation {
     this.list.addEventListener('click', () => this.activeDetailsPage());
     this.listLib.addEventListener('click', () => this.activeDetailsPage());
     this.home_library[0].addEventListener('click', () => this.activeHomePage());
-    this.home_library[1].addEventListener('click', () => this.activeLibraryPage());
+    this.home_library[1].addEventListener('click', () => {this.activeLibraryPage();filmLibraryPage.drawFilmList('Watched')});
     this.logo.addEventListener('click', () => this.activeHomePage());
-    this.favoriteBtn.addEventListener('click', () => filmLibraryPage.drawFilmList('filmsWatched'));
-    this.queueBtn.addEventListener('click', () => filmLibraryPage.drawFilmList('filmsQueue'));
+    this.favoriteBtn.addEventListener('click', () => filmLibraryPage.drawFilmList('Watched'));
+    this.queueBtn.addEventListener('click', () => filmLibraryPage.drawFilmList('Queue'));
   }
 }
 
