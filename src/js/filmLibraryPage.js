@@ -1,6 +1,6 @@
 class libraryPage {
   constructor() {
-    this.libraryList = document.querySelector('.library__list');
+    this.libraryList = document.querySelector('[data-page="library"]');
     this.pageUlr = 'https://image.tmdb.org/t/p/w500/';
   }
   drawFilmList(params) {
