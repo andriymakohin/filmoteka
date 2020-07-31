@@ -1,66 +1,75 @@
-.library__search--inner {
-  height: 74px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.23);
-}
-
-.library__itemList--text {
-  font-size: 16px;
-  font-family: 'Roboto';
-  line-height: 1;
-}
-
-.library__search--line {
-  width: 280px;
-  height: 2px;
-  background-color: #9c99a5;
-  margin-top: 12px;
-}
-.library__indent {
-  display: flex;
-  justify-content: center;
-}
-
-.library__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid #9c99a5;
-  width: 140px;
-  height: 40px;
-  color: $active-text-color;
-  cursor: pointer;
-}
-
-.library__item--active,
-.library__item:hover {
-  background-color: $primary-color;
-  border-bottom: 2px solid $primary-color;
-  color: $item-text-color;
-}
-
-.library__list {
-  list-style: none;
+.library {
+    &__search {
+        &--inner {
+            height: 74px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            box-shadow: 0px 5px 9px 1px $homePageSearchColor;
+        }
+    }
+    &__itemList {
+        &--text {
+            font-size: 16px;
+            font-family: 'Roboto';
+            line-height: 1;
+        }
+    }
+    &__search {
+        &--line {
+            width: 280px;
+            height: 2px;
+            background-color: $homePageBtnColor;
+            margin-top: 12px;
+        }
+    }
+    &__search {
+        &--line {
+            width: 280px;
+            height: 2px;
+            background-color: $homePageBtnColor;
+            margin-top: 12px;
+        }
+    }
+    &__indent {
+        display: flex;
+        justify-content: center;
+    }
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 2px solid $homePageBtnColor;
+        width: 140px;
+        height: 40px;
+        color: $active-text-color;
+        cursor: pointer;
+    }
+    &__item:hover,
+    &__item--active {
+        background-color: $primary-color;
+        border-bottom: 2px solid $primary-color;
+        color: $item-text-color;
+    }
+    &__list {
+        list-style: none;
+    }
 }
 
 @include breakpoints(s) {
-  .library__list {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
+    .library__list {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
 }
 
 @include breakpoints(ml) {
-  .library__list {
-    width: 1024px;
-    margin: 0 auto;
-    
-  }
+    .library__list {
+        width: 1024px;
+        margin: 0 auto;
+    }
 }
-
 
 // .list-items__rating {
 //   display: inline-block;

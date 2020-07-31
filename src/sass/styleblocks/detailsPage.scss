@@ -1,174 +1,149 @@
 .film {
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-  @include breakpoints(s) {
-    display: flex;
-    padding-top: 24px;
-  }
-
-  @include breakpoints(ml) {
-    display: flex;
-    padding-top: 27px;
-  }
-
-  &__imgBox {
-    content: '';
-
-    @include breakpoints(s) {
-      width: 400px;
-    }
-
-    @include breakpoints(ml) {
-      width: 498px;
-    }
-  }
-
-  &__img {
+    box-sizing: border-box;
     margin: 0 auto;
-    display: block;
-  }
-
-  &__info {
-    content: '';
-
+    padding-top: 20px;
+    padding-bottom: 20px;
     @include breakpoints(s) {
-      width: 369px;
+        display: flex;
+        padding-top: 24px;
     }
-
     @include breakpoints(ml) {
-      width: 467px;
+        display: flex;
+        padding-top: 27px;
     }
-  }
-
-  &__name,
-  &__about {
-    text-align: left;
-    font-size: 17px;
-    color: $active-text-color;
-    font-family: 'Roboto';
-    font-weight: 500;
-    line-height: 20px;
-    margin-left: 10px;
-  }
-
-  &__about {
-    margin-top: 30px;
-  }
-
-  &__aboutText {
-    font-size: 14px;
-    font-family: 'Roboto';
-    font-weight: 400;
-    color: $active-text-color;
-    line-height: 18px;
-    margin-left: 24px;
-    margin-top: 17px;
-
-    @include breakpoints(s) {
-      width: 350px;
+    &__imgBox {
+        content: '';
+        @include breakpoints(s) {
+            width: 400px;
+        }
+        @include breakpoints(ml) {
+            width: 498px;
+        }
     }
-
-    @include breakpoints(ml) {
-      width: 410px;
+    &__img {
+        margin: 0 auto;
+        display: block;
     }
-  }
-
-  &__addlist {
-    padding: 0 20px 0 24px;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 18px;
-
-    @include breakpoints(s) {
-      justify-content: flex-start;
-      margin-top: 36px;
+    &__info {
+        content: '';
+        @include breakpoints(s) {
+            width: 369px;
+        }
+        @include breakpoints(ml) {
+            width: 467px;
+        }
     }
-
-    @include breakpoints(ml) {
-      justify-content: flex-start;
-      margin-top: 36px;
+    &__name,
+    &__about {
+        text-align: left;
+        font-size: 17px;
+        color: $active-text-color;
+        font-family: 'Roboto';
+        font-weight: 500;
+        line-height: 20px;
+        margin-left: 10px;
     }
-  }
-
-  &__btn {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Roboto';
-    font-weight: 400;
-    display: flex;
-    outline: none;
-    transition: 0.5s;
-
-    &:hover,
-    &:focus {
-      // border-bottom: 1px solid $primary-color;
-      color: $primary-color;
+    &__about {
+        margin-top: 30px;
     }
-  }
-
-  &__btnVideo--img {
-    margin-right: 6px;
-    margin-top: 2px;
-  }
-
-  &__btnCalendar--img {
-    margin-right: 6px;
-    margin-bottom: 1px;
-  }
+    &__aboutText {
+        font-size: 14px;
+        font-family: 'Roboto';
+        font-weight: 400;
+        color: $active-text-color;
+        line-height: 18px;
+        margin-left: 24px;
+        margin-top: 17px;
+        @include breakpoints(s) {
+            width: 350px;
+        }
+        @include breakpoints(ml) {
+            width: 410px;
+        }
+    }
+    &__addlist {
+        padding: 0 20px 0 24px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 18px;
+        @include breakpoints(s) {
+            justify-content: flex-start;
+            margin-top: 36px;
+        }
+        @include breakpoints(ml) {
+            justify-content: flex-start;
+            margin-top: 36px;
+        }
+    }
+    &__btn {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 14px;
+        font-family: 'Roboto';
+        font-weight: 400;
+        display: flex;
+        outline: none;
+        transition: 0.5s;
+        &:hover,
+        &:focus {
+            // border-bottom: 1px solid $primary-color;
+            color: $primary-color;
+        }
+    }
+    &__btnVideo--img {
+        margin-right: 6px;
+        margin-top: 2px;
+    }
+    &__btnCalendar--img {
+        margin-right: 6px;
+        margin-bottom: 1px;
+    }
 }
 
 @include breakpoints(s) {
-  .film__btnList {
-    margin-right: 15px;
-  }
+    .film__btnList {
+        margin-right: 15px;
+    }
 }
 
 @include breakpoints(ml) {
-  .film__btnList {
-    margin-right: 15px;
-  }
+    .film__btnList {
+        margin-right: 15px;
+    }
 }
 
-.info__table {
-  margin: 0 auto;
-  width: 275px;
-
-  @include breakpoints(s) {
-    width: 348px;
-  }
-
-  @include breakpoints(ml) {
-    width: 452px;
-  }
-}
-
-.info__tableItem {
-  font-size: 15px;
-  text-decoration: none;
-  font-weight: 400;
-  font-family: 'Roboto';
-  line-height: 27px;
-  margin-top: 12px;
-  color: $black-base-color;
-  border: none;
-  display: flex;
-  vertical-align: center;
-}
-
-.info__tableCol {
-  flex-basis: 45%;
-}
-
-.info__tableCol::first-letter {
-  text-transform: uppercase;
-}
-
-.info__tableColor {
-  background-color: $table-background-color;
+.info {
+    &__table {
+        margin: 0 auto;
+        width: 275px;
+        @include breakpoints(s) {
+            width: 348px;
+        }
+        @include breakpoints(ml) {
+            width: 452px;
+        }
+    }
+    &__tableItem {
+        font-size: 15px;
+        text-decoration: none;
+        font-weight: 400;
+        font-family: 'Roboto';
+        line-height: 27px;
+        margin-top: 12px;
+        color: $black-base-color;
+        border: none;
+        display: flex;
+        vertical-align: center;
+    }
+    &__tableCol {
+        flex-basis: 45%;
+    }
+    &__tableCol::first-letter {
+        text-transform: uppercase;
+    }
+    &__tableColor {
+        background-color: $table-background-color;
+    }
 }
