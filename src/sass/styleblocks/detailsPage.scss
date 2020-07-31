@@ -4,24 +4,24 @@
   padding-top: 20px;
   padding-bottom: 20px;
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @include breakpoints(s) {
     display: flex;
     padding-top: 24px;
   }
 
-  @media screen and (min-width: 1025px) {
+  @include breakpoints(ml) {
     display: flex;
     padding-top: 27px;
   }
 
-  &__img-box {
+  &__imgBox {
     content: '';
 
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @include breakpoints(s) {
       width: 400px;
     }
 
-    @media screen and (min-width: 1025px) {
+    @include breakpoints(ml) {
       width: 498px;
     }
   }
@@ -34,11 +34,11 @@
   &__info {
     content: '';
 
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @include breakpoints(s) {
       width: 369px;
     }
 
-    @media screen and (min-width: 1025px) {
+    @include breakpoints(ml) {
       width: 467px;
     }
   }
@@ -51,14 +51,14 @@
     font-family: 'Roboto';
     font-weight: 500;
     line-height: 20px;
-    margin-left: 24px;
+    margin-left: 10px;
   }
 
   &__about {
     margin-top: 30px;
   }
 
-  &__about-text {
+  &__aboutText {
     font-size: 14px;
     font-family: 'Roboto';
     font-weight: 400;
@@ -67,11 +67,11 @@
     margin-left: 24px;
     margin-top: 17px;
 
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @include breakpoints(s) {
       width: 350px;
     }
 
-    @media screen and (min-width: 1025px) {
+    @include breakpoints(ml) {
       width: 410px;
     }
   }
@@ -83,12 +83,12 @@
     justify-content: space-between;
     margin-top: 18px;
 
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @include breakpoints(s) {
       justify-content: flex-start;
       margin-top: 36px;
     }
 
-    @media screen and (min-width: 1025px) {
+    @include breakpoints(ml) {
       justify-content: flex-start;
       margin-top: 36px;
     }
@@ -103,52 +103,54 @@
     font-weight: 400;
     display: flex;
     outline: none;
+    transition: 0.5s;
 
     &:hover,
     &:focus {
       border-bottom: 1px solid $primary-color;
-      transition: 0.5s;
+      background-color: $primary-color;
     }
   }
 
-  &__btn-video--img {
+  &__btnVideo--img {
     margin-right: 6px;
     margin-top: 2px;
   }
 
-  &__btn-calendar--img {
+  &__btnCalendar--img {
     margin-right: 6px;
     margin-bottom: 1px;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .film__btn-list {
+@include breakpoints(s) {
+  .film__btnList {
     margin-right: 15px;
   }
 }
 
-@media screen and (min-width: 1025px) {
-  .film__btn-list {
+@include breakpoints(ml) {
+  .film__btnList {
     margin-right: 15px;
   }
 }
 
 .info__table {
-  margin-left: 24px;
+  margin: 0 auto;
   width: 275px;
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @include breakpoints(s) {
     width: 348px;
   }
 
-  @media screen and (min-width: 1025px) {
+  @include breakpoints(ml) {
     width: 452px;
   }
 }
 
-.info__table-item {
-  font-size: 13px;
+.info__tableItem {
+  font-size: 15px;
+  text-decoration: none;
   font-weight: 400;
   font-family: 'Roboto';
   line-height: 27px;
@@ -159,10 +161,14 @@
   vertical-align: center;
 }
 
-.info__table-col {
-  flex-basis: 25%;
+.info__tableCol {
+  flex-basis: 45%;
 }
 
-.info__table-color {
+.info__tableCol::first-letter {
+  text-transform: uppercase;
+}
+
+.info__tableColor {
   background-color: $table-background-color;
 }

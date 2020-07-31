@@ -1,21 +1,20 @@
-.search {
+.homePage__search {
   box-shadow: 0px 13px 23px -13px rgba(0, 0, 0, 0.41);
   height: 60px;
 }
 
-.search-form {
+.search__form {
   display: flex;
   justify-content: center;
   padding-top: 17px;
 }
 
-input.search-film {
+.search__film {
   width: 260px;
   font-size: 14px;
   border: none;
   border-bottom: 2px solid #9c99a5;
   font-family: 'Roboto Regular', sans-serif;
-  src: '../fonts/roboto/Roboto-Regular.woff';
   font-weight: 400;
   font-style: normal;
   text-align: center;
@@ -23,7 +22,7 @@ input.search-film {
   outline: 0;
   transition: all .2s linear;
 }
-input.search-film:hover {
+.search__film:hover {
   border-color: $primary-color;
   transform: scale(1.1);
 }
@@ -40,11 +39,15 @@ input.search-film:hover {
   border-bottom: 2px solid #9c99a5;
   width: 140px;
   height: 40px;
+  font-family: 'Roboto Regular', sans-serif;
+  font-size: 12px;
   color: $active-text-color;
   cursor: pointer;
+  transition: 0.5s all;
 }
 
-.listMuvie__item--active {
+.listMuvie__item--active,
+.listMuvie__item:hover {
   background-color: $primary-color;
   border-bottom: 2px solid $primary-color;
   color: $item-text-color;
@@ -61,7 +64,7 @@ transition: all .2s linear;
 cursor: pointer;
 }
 .list-items:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   z-index: 1;
 }
 .list-items__img {
@@ -102,9 +105,39 @@ cursor: pointer;
   padding: 0 10px;
 }
 
+.homePage__navBtn {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.homePage__btnsAdd {
+  padding: 10px 15px;
+  border: 1px solid #9c99a5;
+  border-radius: 3px;
+  font-family: 'Roboto Regular', sans-serif;
+  src: '../fonts/roboto/Roboto-Regular.woff';
+  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+  color: $disabled-text-color;
+  transition: 0.5s all;
+}
+
+.homePage__btnsAdd:not([disabled]):hover {
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
+}
+
+.homePage__btnsAdd:not([disabled]) {
+  cursor: pointer;
+}
+
 // ===================== TABLET ==============
 
-@media (min-width: 768px) {
+@include breakpoints(s) {
   .list {
     display: flex;
     flex-wrap: wrap;
@@ -118,11 +151,17 @@ cursor: pointer;
     width: 346px;
     height: 180px;
   }
+
+  .listMuvie__item {
+    font-size: 15px;
+  }
 }
+
+
 
 // =================== DESKTOP =================
 
-@media (min-width: 1024px) {
+@include breakpoints(ml) {
   .list {
     display: flex;
     flex-wrap: wrap;
@@ -138,25 +177,4 @@ cursor: pointer;
   }
 }
 
-.pages {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
 
-.btn {
-  padding: 10px 15px;
-  border: 1px solid #9c99a5;
-  border-radius: 3px;
-  font-family: 'Roboto Regular', sans-serif;
-  src: '../fonts/roboto/Roboto-Regular.woff';
-  font-weight: 500;
-  font-size: 14px;
-  font-style: normal;
-  color: $disabled-text-color;
-}
-.btn:not([disabled]) {
-  cursor: pointer;
-}

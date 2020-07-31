@@ -1,13 +1,13 @@
 class navigation {
   constructor() {
-    this.home_library = Array.from(document.querySelectorAll('.header-nav_item'));
+    this.home_library = Array.from(document.querySelectorAll('.header__navItem'));
     this.addToWatched = document.querySelector('.film__btn--favorite');
     this.addToQueue = document.querySelector('.film__btn--queue');
     this.detailsPageNone = document.querySelector('.film');
-    this.filmLibraryPageNone = document.querySelector('.header-search__library');
-    this.favoriteBtn = Array.from(document.querySelectorAll('.header-search__item'))[0];
-    this.queueBtn = Array.from(document.querySelectorAll('.header-search__item'))[1];
-    this.logo = document.querySelector('.header-logo');
+    this.filmLibraryPageNone = document.querySelector('.library');
+    this.favoriteBtn = Array.from(document.querySelectorAll('.library__item'))[0];
+    this.queueBtn = Array.from(document.querySelectorAll('.library__item'))[1];
+    this.logo = document.querySelector('.header__logo');
     this.formWrap = document.querySelector('.form-wrap');
     this.movieWrap = document.querySelector('.movies-wrap');
     this.list = document.querySelector('[data-page="home"]');
@@ -39,6 +39,8 @@ class navigation {
 
   init() {
     this.activeHomePage();
+    this.addToQueue.addEventListener('click', () => detailsPage.toggleToQueue());
+    this.addToWatched.addEventListener('click', () => detailsPage.toggleToWatched());
     this.list.addEventListener('click', () => this.activeDetailsPage());
     this.listLib.addEventListener('click', () => this.activeDetailsPage());
     this.home_library[0].addEventListener('click', () => this.activeHomePage());
