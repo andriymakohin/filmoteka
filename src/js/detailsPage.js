@@ -12,6 +12,8 @@ class details {
     this.runTime = document.querySelector('#js-runTime');
     this.addQueueButton = document.querySelector('#js-addQueueButton'); 
     this.addWatchedButton = document.querySelector('#js-addWatchedButton');
+    this.addWatchedImg = document.querySelector('.film__btnVideo--img');
+    this.addQueueImg = document.querySelector('.film__btnCalendar--img');
     this.filmsQueueArr = [];
     this.filmsWatchedArr = [];
     this.setNameLocalStrage = ['Queue', 'Watched', 'dataFilm']
@@ -67,21 +69,27 @@ class details {
     this.releaseDate.textContent = selectFilm.release_date;
     this.runTime.textContent = selectFilm.runtime;
     this.textDetails.textContent = selectFilm.overview;
+
     this.monitorButtonStatusText(selectFilm);
   };
   monitorButtonStatusText(selectFilm) {
     this.localStorageFilmsQueue = localStorage.getItem('films'+this.setNameLocalStrage[0]);
     if (this.localStorageFilmsQueue && JSON.parse(this.localStorageFilmsQueue).find(el => el.id === selectFilm.id)){
-        this.addQueueButton.textContent = 'Delete from queue';
+        this.addQueueImg.setAttribute('src', './images/details-page-icon/calendar-minus.png');
+        this.addQueueButton.lastChild.textContent = 'Delete from queue';
     } else {
-      this.addQueueButton.textContent = 'Add to queue';
+      this.addQueueImg.setAttribute('src', './images/details-page-icon/calendar.jpg');
+      this.addQueueButton.lastChild.textContent = 'Add to queue';
     }
     this.localStorageFilmsWatched = localStorage.getItem('films'+this.setNameLocalStrage[1]);
     if (this.localStorageFilmsWatched && JSON.parse(this.localStorageFilmsWatched).find(el => el.id === selectFilm.id)){
-      this.addWatchedButton.textContent = 'Delete from watched';
+      this.addWatchedImg.setAttribute('src', './images/details-page-icon/delete-video.png');
+      this.addWatchedButton.lastChild.textContent = 'Delete from watched';
     } else {
-      this.addWatchedButton.textContent = 'Add to watched';
+      this.addWatchedImg.setAttribute('src', './images/details-page-icon/video.jpg');
+      this.addWatchedButton.lastChild.textContent = 'Add to watched';
     }
+    
   };
   getDetails(id) {
     this.options = `https://api.themoviedb.org/3/movie/${id}?api_key=${homePage.API_KEY}&language=${homePage.searchLang}&append_to_response=image`;
