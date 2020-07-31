@@ -4,7 +4,7 @@ class search {
     this.btnNumber = document.querySelector('.page-number');
     this.btnPrev = document.querySelector('.js-btn-prev');
     this.btnNext = document.querySelector('.js-btn-next');
-    this.listMuvie = document.querySelector('.listMuvie');
+    this.listMovie = document.querySelector('.listMovie');
     this.API_KEY = apiKey;
     this.searchLang = 'uk-UA';
     this.urlApi = 'https://api.themoviedb.org/3/';
@@ -45,7 +45,7 @@ class search {
     this.getFilmsList()
   }
   getUrl(params) {
-    if (params === 'search') {this.typeUrl = 'search/collection'; this.listMuvie.style.display = "none"}
+    if (params === 'search') {this.typeUrl = 'search/collection'; this.listMovie.style.display = "none"}
     params === 'playing'? this.typeUrl = 'movie/now_playing' : null;
     params === 'popular'? this.typeUrl = 'movie/popular' : null;
     params === 'top'? this.typeUrl = 'movie/top_rated' : null;
@@ -53,15 +53,15 @@ class search {
   
     if (params === 'playing' || params === 'popular' || params === 'top' || params === 'upcoming') {
       localStorage.setItem('loadPage', params);
-      this.listMuvie.style.display = "flex"; 
-      this.listMuvieActive(params);
+      this.listMovie.style.display = "flex"; 
+      this.listMovieActive(params);
     };
   
     return `${this.urlApi}${this.typeUrl}?api_key=${this.API_KEY}&language=${this.searchLang}&page=${this.page}`;
   }
-  listMuvieActive(params) {
-    document.querySelector('.listMuvie__item--active')? document.querySelector('.listMuvie__item--active').classList.remove('listMuvie__item--active') : null;
-    document.querySelector('.listMuvie__item[data-type="'+params+'"]').classList.add('listMuvie__item--active');
+  listMovieActive(params) {
+    document.querySelector('.listMovie__item--active')? document.querySelector('.listMovie__item--active').classList.remove('listMovie__item--active') : null;
+    document.querySelector('.listMovie__item[data-type="'+params+'"]').classList.add('listMovie__item--active');
   }
   plaginationPages(totalPages) {
     this.btnNumber.disabled = true;
