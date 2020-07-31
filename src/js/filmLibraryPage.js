@@ -1,4 +1,4 @@
-class libraryPage {
+class LibraryPage {
   constructor() {
     this.libraryList = document.querySelector('[data-page="library"]');
     this.pageUlr = 'https://image.tmdb.org/t/p/w500/';
@@ -25,4 +25,4 @@ class libraryPage {
   }
 }
 
-const filmLibraryPage = new libraryPage();
+const filmLibraryPage = new LibraryPage();

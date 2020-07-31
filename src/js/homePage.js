@@ -1,11 +1,17 @@
-
-class loadList {
+class LoadList {
     constructor() {
         this.pageUlr = 'https://image.tmdb.org/t/p/w500';
         this.listImages = document.querySelector('.js-list');
         this.src = '../images/404.png';
         this.title = "";
     }
+
+    progressBar() {
+        this.winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        this.height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        this.scrolled = (this.winScroll / this.height) * 100;
+        document.getElementById("myBar").style.width = this.scrolled + "%";
+      }
     postList(array) {
         this.liArray = array.results.map(item => this.createList(item)).join('');
         this.listImages.innerHTML = this.liArray;
@@ -24,4 +30,6 @@ class loadList {
     }
 }
 
-const loadPage = new loadList();
+const loadPage = new LoadList();
+
+window.onscroll = function() {loadPage.progressBar()};

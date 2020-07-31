@@ -15,7 +15,11 @@ body {
 header {
     background-color: $primary-color;
     height: 65px;
-    padding-top: 20px
+    // margin-bottom: 20px;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+     width: 100%;
 }
 
 img {

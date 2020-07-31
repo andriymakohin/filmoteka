@@ -1,4 +1,4 @@
-class navigation {
+class Navigation {
   constructor() {
     this.home_library = Array.from(document.querySelectorAll('.header__navItem'));
     this.addToWatched = document.querySelector('.film__btn--favorite');
@@ -50,6 +50,6 @@ class navigation {
   }
 }
 
-  const navigationPage = new navigation();
+  const navigationPage = new Navigation();
 
   navigationPage.init();

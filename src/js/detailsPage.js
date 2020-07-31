@@ -1,4 +1,4 @@
-class details {
+class Details {
   constructor() {
     this.textDetails = document.querySelector('#js-textDetails');
     this.img = document.querySelector('#js-detailsImg');
@@ -109,6 +109,6 @@ class details {
   };
 }
 
-const detailsPage = new details();
+const detailsPage = new Details();
 
 detailsPage.init();
