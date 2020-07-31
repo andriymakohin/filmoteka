@@ -1,6 +1,6 @@
 class search {
   constructor(apiKey) {
-    this.inputSearch = document.querySelector('.search-film');
+    this.inputSearch = document.querySelector('.search__film');
     this.btnNumber = document.querySelector('.page-number');
     this.btnPrev = document.querySelector('.js-btn-prev');
     this.btnNext = document.querySelector('.js-btn-next');
