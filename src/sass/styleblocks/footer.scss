@@ -19,10 +19,18 @@ footer {
         margin-right: 10px;
         color: $disabled-text-color;
     }
+    &__btnSection{
+        display: none;
+        z-index: 2;
+    }
     &__btnUp {
+        position: fixed;
+        top: 85%;
+        right: 5%;
         height: 50px;
         width: 50px;
         border: none;
+        cursor: pointer;
         border-radius: 50%;
         font-size: 10px;
         box-shadow: $shadow;
@@ -38,8 +46,5 @@ footer {
 @include breakpoints(s) {
     .footer {
         padding-top: 30px;
-        &__btnUp {
-            display: none;
-        }
     }
   }

@@ -12,6 +12,7 @@ class Navigation {
     this.movieWrap = document.querySelector('.movies-wrap');
     this.list = document.querySelector('[data-page="home"]');
     this.listLib = document.querySelector('[data-page="library"]');
+    // this.scrolBtn = document.querySelector('.footer__btnSection');
     this.selectFilm = '';
   }
 
@@ -20,7 +21,6 @@ class Navigation {
     this.detailsPageNone.classList.add('display-section');
     this.filmLibraryPageNone.classList.add('display-section');
     this.formWrap.classList.remove('display-section');
-
   }
   activeLibraryPage() {
     this.detailsPageNone.classList.add('display-section');

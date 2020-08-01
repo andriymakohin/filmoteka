@@ -33,3 +33,10 @@ class LoadList {
 const loadPage = new LoadList();
 
 window.onscroll = function() {loadPage.progressBar()};
+
+jQuery(function(f){
+    var element = f('.footer__btnSection');
+    f(window).scroll(function(){
+        element['fade'+ (f(this).scrollTop() > 0 ? 'In': 'Out')](500);           
+    });
+});
