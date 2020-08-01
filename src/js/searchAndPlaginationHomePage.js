@@ -74,14 +74,25 @@ class Search {
     this.page === 1 ? this.btnPrev.disabled = true : this.btnPrev.disabled = false;
     totalPages === this.page ? this.btnNext.disabled = true : null;
   }
+
+  closePage() {
+    document.getElementById("myDiv").style.display = "none";
+    document.getElementById("loader").style.display = "block";
+    setTimeout(this.showPage, 1000);
+  }
+  showPage() {
+    document.getElementById("myDiv").style.display = "block";
+    document.getElementById("loader").style.display = "none";
+  }
+
   init() {
     this.getFilmsList(localStorage.getItem('loadPage')? localStorage.getItem('loadPage') : 'popular');
-
     document.addEventListener('keydown', event => {
       if (event.keyCode === 13) {
         this.setloadPage = false;
         event.preventDefault();
-        this.getFilmsList('search');
+        this.closePage();
+        this.getFilmsList('search')
       }
     });
     this.btnPrev.addEventListener('click', () => this.setPrevNext('prev'));
