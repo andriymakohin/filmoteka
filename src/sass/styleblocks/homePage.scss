@@ -5,29 +5,48 @@
 }
 
 .search {
+  width: 500px;
+  margin: 0 auto;
   &__form {
     display: flex;
-    justify-content: center;
-    padding-top: 17px;
-  }
-  &__film {
-    width: 260px;
-    font-size: 14px;
-    border: none;
-    border-bottom: 2px solid $homePageBtnColor;
-    font-family: 'Roboto Regular', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
-    padding-bottom: 3px;
-    outline: 0;
+    padding: 9px 0;
     transition: all 0.2s linear;
   }
-  &__film:hover {
+  &__form:hover{
     border-color: $primary-color;
     transform: scale(1.1);
   }
+  &__film {
+    font-family: 'Roboto Regular', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    width: 100%;
+    height: 42px;
+    padding-left: 10px;
+    border: 2px solid $primary-color;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    background: $item-text-color;
+    color: $black-base-color;
+  }
+  &__btn {
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: $primary-color;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+  }
+  &__btn:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: $item-text-color;
+  }
 }
+
 //----LOADER----//
 #loader {
     display: none;
@@ -233,7 +252,4 @@
     }
   }
 }
-
-
-
 

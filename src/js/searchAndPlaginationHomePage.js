@@ -1,6 +1,7 @@
 class Search {
   constructor(apiKey) {
     this.inputSearch = document.querySelector('.search__film');
+    this.searchBtn = document.querySelector('.search__btn');
     this.btnNumber = document.querySelector('.page-number');
     this.btnPrev = document.querySelector('.js-btn-prev');
     this.btnNext = document.querySelector('.js-btn-next');
@@ -15,9 +16,13 @@ class Search {
     this.typeUrl = 'movie/popular';
   }
   getFilmsList(event) {
-    event? this.page = 1 : null;
+    event ? this.page = 1 : null;
     if (!this.setloadPage) {
-      if (this.check(this.inputSearch.value)) {this.value = this.inputSearch.value;} else {return;}
+      if (this.check(this.inputSearch.value)) {
+        this.value = this.inputSearch.value;
+      } else {
+        return;
+      }
       this.options = `$&query=${this.value}`;
     }
     fetch(this.getUrl(event) + this.options)
@@ -29,8 +34,10 @@ class Search {
       })
       .catch(error => console.log(error));
   }
-  check(item){
-    if (item === "" || item === " ") {return false}
+  check(item) {
+    if (item === "" || item === " ") {
+      return false
+    }
     return true;
   }
   setPrevNext(params) {
@@ -41,27 +48,30 @@ class Search {
       this.page -= 1;
     }
     params === 'next' ? (this.page += 1) : null;
-  
+
     this.getFilmsList()
   }
   getUrl(params) {
-    if (params === 'search') {this.typeUrl = 'search/collection'; this.listMovie.style.display = "none"}
-    params === 'playing'? this.typeUrl = 'movie/now_playing' : null;
-    params === 'popular'? this.typeUrl = 'movie/popular' : null;
-    params === 'top'? this.typeUrl = 'movie/top_rated' : null;
-    params === 'upcoming'? this.typeUrl = 'movie/upcoming' : null;
-  
+    if (params === 'search') {
+      this.typeUrl = 'search/movie';
+      this.listMovie.style.display = "none"
+    }
+    params === 'playing' ? this.typeUrl = 'movie/now_playing' : null;
+    params === 'popular' ? this.typeUrl = 'movie/popular' : null;
+    params === 'top' ? this.typeUrl = 'movie/top_rated' : null;
+    params === 'upcoming' ? this.typeUrl = 'movie/upcoming' : null;
+
     if (params === 'playing' || params === 'popular' || params === 'top' || params === 'upcoming') {
       localStorage.setItem('loadPage', params);
-      this.listMovie.style.display = "flex"; 
+      this.listMovie.style.display = "flex";
       this.listMovieActive(params);
     };
-  
+
     return `${this.urlApi}${this.typeUrl}?api_key=${this.API_KEY}&language=${this.searchLang}&page=${this.page}`;
   }
   listMovieActive(params) {
-    document.querySelector('.listMovie__item--active')? document.querySelector('.listMovie__item--active').classList.remove('listMovie__item--active') : null;
-    document.querySelector('.listMovie__item[data-type="'+params+'"]').classList.add('listMovie__item--active');
+    document.querySelector('.listMovie__item--active') ? document.querySelector('.listMovie__item--active').classList.remove('listMovie__item--active') : null;
+    document.querySelector('.listMovie__item[data-type="' + params + '"]').classList.add('listMovie__item--active');
   }
   plaginationPages(totalPages) {
     this.btnNumber.disabled = true;
@@ -86,7 +96,14 @@ class Search {
   }
 
   init() {
-    this.getFilmsList(localStorage.getItem('loadPage')? localStorage.getItem('loadPage') : 'popular');
+    this.getFilmsList(localStorage.getItem('loadPage') ? localStorage.getItem('loadPage') : 'popular');
+    this.searchBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.setloadPage = false;
+      this.closePage();
+      this.getFilmsList('search')
+    })
+
     document.addEventListener('keydown', event => {
       if (event.keyCode === 13) {
         this.setloadPage = false;
