@@ -13,7 +13,7 @@ class Search {
     this.page = 1;
     this.options = '';
     this.setloadPage = true;
-    this.typeUrl = 'movie/popular';
+    this.typeUrl = 'movie/multi';
   }
   getFilmsList(event) {
     event ? this.page = 1 : null;
@@ -67,7 +67,7 @@ class Search {
       this.listMovieActive(params);
     };
 
-    return `${this.urlApi}${this.typeUrl}?api_key=${this.API_KEY}&language=${this.searchLang}&page=${this.page}`;
+    return `${this.urlApi}${this.typeUrl}?api_key=${this.API_KEY}&language=${this.searchLang}&page=${this.page}&include_adult=false`;
   }
   listMovieActive(params) {
     document.querySelector('.listMovie__item--active') ? document.querySelector('.listMovie__item--active').classList.remove('listMovie__item--active') : null;
