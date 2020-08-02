@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Filmoteka</title>
+    <script src="https://use.fontawesome.com/977f157903.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Сюда будет всталена ссылка на файл стилей -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- endinject -->
+</head>
+
+<body>
+    <a id="heder"></a>
+    <header id="heder">
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+      <div class="container">
+        <div class="header">
+          <div class="header__logo" onClick="window.location.reload()">
+            <div class="header__logoImg">
+              <img src="../images/logo.png" alt="filmoteka">
+            </div>
+            <p class="header__logoTitle">Filmoteka</p>
+          </div>
+          <nav class="header__nav nav">
+            <input type="checkbox" class="nav__cb" id="menu-cb"/>
+            <div class="nav__content">
+            <ul class="header__navList nav__items">
+              <li class="header__navItem nav__item" data-item="home" onClick="window.location.reload()"><a class="header__navTitle nav__item-text"
+                  href="#">home</a></li>
+              <li class="header__navItem nav__item" data-item="library"><a class="header__navTitle nav__item-text" href="#">my library</a></li>
+            </ul>
+          </div>
+          <label class="nav__btn" for="menu-cb"></label>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+        <section class="library display-section">
+        
+            <div class="library__search--inner" >
+              <div class="library__indent container">
+                <div class="library__item">
+                  <span class="library__itemList--text">Watched</span>
+                </div>
+                <div class="library__item">
+                  <span class="library__itemList--text">Queue</span>
+                </div>
+              </div>
+            </div>
+            <ul class="library__list container " data-page="library"></ul>
+            
+            </section>
+        <section class="homePage movies-wrap">
+          <div class="homePage__search">
+            <div class="search container form-wrap">
+              <form class="search__form">
+                <button class="search__btn" type="submit"></button>
+                <input class="search__film" atribu type="search" placeholder="Write movie name and click Enter" />
+              </form>
+            </div>
+          </div>
+          <div id="loader"></div>
+          <div class="container animate-bottom" id="myDiv">
+            <div class="listMovie">
+              <div class="listMovie__item" data-type="playing">Now playing </div>
+              <div class="listMovie__item" data-type="popular">Popular</div>
+              <div class="listMovie__item" data-type="top">Top rated</div>
+              <div class="listMovie__item" data-type="upcoming">Upcoming</div>
+            </div>
+        
+            <ul class="list js-list" data-page="home"></ul>
+        
+        
+        
+            <div class="homePage__navBtn">
+              <div class="homePage__btns">
+                <button class="homePage__btnsAdd js-btn-prev">Prev</button>
+                <button class="homePage__btnsAdd page-number">1</button>
+                <button class="homePage__btnsAdd js-btn-next">Next</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="film container">
+          <div class="film__imgBox">
+            <img class="film__img" id="js-detailsImg" src=" " alt="film poster" width="100%" height="100%" />
+          </div>
+          <div class="film__info">
+            <h2 class="film__name" id="js-detailsTitle">Film name</h2>
+            <div class="info__table">
+              <div class="info__tableItem info__tableColor">
+                <p class="info__tableCol">vote/votes</p>
+                <p class="info__tableCol" id="js-vote"></p>
+              </div>
+              <div class="info__tableItem info__tableColor">
+                <p class="info__tableCol">vote count</p>
+                <p class="info__tableCol" id="js-voteCount"></p>
+              </div>
+              <div class="info__tableItem">
+                <p class="info__tableCol">popularity</p>
+                <p class="info__tableCol" id="js-popularity"></p>
+              </div>
+              <div class="info__tableItem info__tableColor">
+                <p class="info__tableCol">original title</p>
+                <p class="info__tableCol" id="js-originalTitle"></p>
+              </div>
+              <div class="info__tableItem">
+                <p class="info__tableCol">genre</p>
+                <p class="info__tableCol" id="js-genre"></p>
+              </div>
+              <div class="info__tableItem">
+                <p class="info__tableCol">release date</p>
+                <p class="info__tableCol" id="js-releaseDate"></p>
+              </div>
+              <div class="info__tableItem">
+                <p class="info__tableCol">runtime minutes</p>
+                <p class="info__tableCol" id="js-runTime"></p>
+              </div>
+            </div>
+            <h3 class="film__about">About</h3>
+            <p class="film__aboutText" id="js-textDetails"></p>
+            <ul class="film__addlist">
+              <li class="film__btnList">
+                <button class="film__btn film__btn--favorite" id="js-addWatchedButton">
+                  <img class="film__btnVideo--img" src="./images/details-page-icon/video.jpg" alt="video" width="15"
+                    height="10" />
+                    <!-- <span></span> -->
+                </button>
+              </li>
+              <li>
+                <button class="film__btn film__btn--queue" id="js-addQueueButton">
+                  <img class="film__btnCalendar--img" src="./images/details-page-icon/calendar.jpg" alt="calendar" width="14"
+                    height="10" />
+                    <!-- <span></span> -->
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
+    
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer">
+          <p class="footer__tittle">©2020 Made by<a class="footer__tittleLink" target="_blank" href="https://github.com/andriymakohin/filmoteka/tree/master"> Bootcamp_Lviv</a>Teams</p>
+          <a href="#heder" class="footer__btnSection">
+            <button class="footer__btnUp">
+              <img class="footer__btnArrowUp" src="../images/footer-btn-arrow.png" alt="" /></button></a>
+        </div>
+      </div>
+    </footer>
+    <!-- Сюда будет всталена ссылка на файл скриптов -->
+    <!-- inject:js -->
+    <script src="js/scripts.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
