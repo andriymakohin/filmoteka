@@ -6,16 +6,20 @@
     <div class="header">
       <div class="header__logo" onClick="window.location.reload()">
         <div class="header__logoImg">
-          <img src="../images/logo.png" alt="">
+          <img src="../images/logo.png" alt="filmoteka">
         </div>
         <p class="header__logoTitle">Filmoteka</p>
       </div>
-      <nav class="header__nav">
-        <ul class="header__navList">
-          <li class="header__navItem" data-item="home" onClick="window.location.reload()"><a class="header__navTitle"
+      <nav class="header__nav nav">
+        <input type="checkbox" class="nav__cb" id="menu-cb"/>
+        <div class="nav__content">
+        <ul class="header__navList nav__items">
+          <li class="header__navItem nav__item" data-item="home" onClick="window.location.reload()"><a class="header__navTitle nav__item-text"
               href="#">home</a></li>
-          <li class="header__navItem" data-item="library"><a class="header__navTitle" href="#">my library</a></li>
+          <li class="header__navItem nav__item" data-item="library"><a class="header__navTitle nav__item-text" href="#">my library</a></li>
         </ul>
+      </div>
+      <label class="nav__btn" for="menu-cb"></label>
       </nav>
     </div>
   </div>

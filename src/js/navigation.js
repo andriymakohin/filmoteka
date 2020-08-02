@@ -12,7 +12,6 @@ class Navigation {
     this.movieWrap = document.querySelector('.movies-wrap');
     this.list = document.querySelector('[data-page="home"]');
     this.listLib = document.querySelector('[data-page="library"]');
-    // this.scrolBtn = document.querySelector('.footer__btnSection');
     this.selectFilm = '';
   }
 
