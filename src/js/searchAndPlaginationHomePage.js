@@ -35,7 +35,7 @@ class Search {
       .catch(error => console.log(error));
   }
   check(item) {
-    if (item === "" || item === " ") {
+    if (item === "" || item === " " || item === "  " || item === "   ") {
       return false
     }
     return true;

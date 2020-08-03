@@ -28,10 +28,10 @@ class Details {
         detailsPage.monitorButtonStatusText(this.filmObject);
         return;
     }
-    this.newFilmObject = { backdrop_path: this.filmObject.backdrop_path, original_title: this.filmObject.original_title, id: this.filmObject.id, vote_average: this.filmObject.vote_average};
+    this.newFilmObject = { backdrop_path: this.checkPoster(this.filmObject.backdrop_path, this.filmObject.poster_path), original_title: this.filmObject.original_title, id: this.filmObject.id, vote_average: this.filmObject.vote_average};
     if (this.getfilmSave) {
       this.obj = JSON.parse(localStorage.getItem('films'+this.setNameLocalStrage[0]));
-      localStorage.setItem('films'+this.setNameLocalStrage[0], JSON.stringify([...this.obj, this.newFilmObject]));
+      localStorage.setItem('films'+this.setNameLocalStrage[0], JSON.stringify([this.newFilmObject, ...this.obj]));
     } else {
       localStorage.setItem('films'+this.setNameLocalStrage[0], JSON.stringify([this.newFilmObject]));
   }
@@ -47,15 +47,18 @@ class Details {
           detailsPage.monitorButtonStatusText(this.filmObject);
           return;
       }
-      this.newFilmObject = { backdrop_path: this.filmObject.backdrop_path, original_title: this.filmObject.original_title, id: this.filmObject.id, vote_average: this.filmObject.vote_average};
+      this.newFilmObject = { backdrop_path: this.checkPoster(this.filmObject.backdrop_path, this.filmObject.poster_path), original_title: this.filmObject.original_title, id: this.filmObject.id, vote_average: this.filmObject.vote_average};
       if (this.getfilmSave) {
         this.obj = JSON.parse(localStorage.getItem('films'+this.setNameLocalStrage[1]));
-        localStorage.setItem('films'+this.setNameLocalStrage[1], JSON.stringify([...this.obj, this.newFilmObject]));
+        localStorage.setItem('films'+this.setNameLocalStrage[1], JSON.stringify([this.newFilmObject, ...this.obj]));
       } else {
         localStorage.setItem('films'+this.setNameLocalStrage[1], JSON.stringify([this.newFilmObject]));
     }
     detailsPage.monitorButtonStatusText(this.filmObject);
   };
+  checkPoster(poster_first, poster_second){
+   return poster_first? poster_first : poster_second;
+  }
   showDetails(selectFilm) {
     this.img.src = `https://image.tmdb.org/t/p/w500${selectFilm.poster_path}`;
     this.title.textContent = selectFilm.data;
