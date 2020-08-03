@@ -62,7 +62,7 @@ var Details = /*#__PURE__*/function () {
       }
 
       this.newFilmObject = {
-        backdrop_path: this.filmObject.backdrop_path,
+        backdrop_path: this.checkPoster(this.filmObject.backdrop_path, this.filmObject.poster_path),
         original_title: this.filmObject.original_title,
         id: this.filmObject.id,
         vote_average: this.filmObject.vote_average
@@ -70,7 +70,7 @@ var Details = /*#__PURE__*/function () {
 
       if (this.getfilmSave) {
         this.obj = JSON.parse(localStorage.getItem('films' + this.setNameLocalStrage[0]));
-        localStorage.setItem('films' + this.setNameLocalStrage[0], JSON.stringify([].concat(_toConsumableArray(this.obj), [this.newFilmObject])));
+        localStorage.setItem('films' + this.setNameLocalStrage[0], JSON.stringify([this.newFilmObject].concat(_toConsumableArray(this.obj))));
       } else {
         localStorage.setItem('films' + this.setNameLocalStrage[0], JSON.stringify([this.newFilmObject]));
       }
@@ -98,7 +98,7 @@ var Details = /*#__PURE__*/function () {
       }
 
       this.newFilmObject = {
-        backdrop_path: this.filmObject.backdrop_path,
+        backdrop_path: this.checkPoster(this.filmObject.backdrop_path, this.filmObject.poster_path),
         original_title: this.filmObject.original_title,
         id: this.filmObject.id,
         vote_average: this.filmObject.vote_average
@@ -106,12 +106,17 @@ var Details = /*#__PURE__*/function () {
 
       if (this.getfilmSave) {
         this.obj = JSON.parse(localStorage.getItem('films' + this.setNameLocalStrage[1]));
-        localStorage.setItem('films' + this.setNameLocalStrage[1], JSON.stringify([].concat(_toConsumableArray(this.obj), [this.newFilmObject])));
+        localStorage.setItem('films' + this.setNameLocalStrage[1], JSON.stringify([this.newFilmObject].concat(_toConsumableArray(this.obj))));
       } else {
         localStorage.setItem('films' + this.setNameLocalStrage[1], JSON.stringify([this.newFilmObject]));
       }
 
       detailsPage.monitorButtonStatusText(this.filmObject);
+    }
+  }, {
+    key: "checkPoster",
+    value: function checkPoster(poster_first, poster_second) {
+      return poster_first ? poster_first : poster_second;
     }
   }, {
     key: "showDetails",
@@ -210,8 +215,6 @@ var LibraryPage = /*#__PURE__*/function () {
   _createClass(LibraryPage, [{
     key: "drawFilmList",
     value: function drawFilmList(params) {
-      var _this = this;
-
       this.movieMasyv = JSON.parse(localStorage.getItem('films' + params));
       document.querySelector('.library__item--active') ? document.querySelector('.library__item--active').classList.remove('library__item--active') : null;
 
@@ -228,16 +231,9 @@ var LibraryPage = /*#__PURE__*/function () {
       }
 
       this.movieMasyv = this.movieMasyv.map(function (obj) {
-        return _this.createLibraryCardFunc(obj);
+        return loadPage.createList(obj);
       }).join('');
       this.libraryList.innerHTML = this.movieMasyv;
-    }
-  }, {
-    key: "createLibraryCardFunc",
-    value: function createLibraryCardFunc(obj) {
-      obj.backdrop_path ? this.src = this.pageUlr + obj.backdrop_path : null;
-      obj.poster_path ? this.src = this.pageUlr + obj.poster_path : null;
-      return "<li class=\"list__items\" data-id=\"".concat(obj.id, "\">\n          <img src=\"").concat(this.src, "\" alt=\"").concat(obj.original_title, "\" class=\"list__itemsImg\">\n          <div class=\"list__layout\">\n              <p class=\"list__itemsTitle\">").concat(obj.original_title, "</p>\n          </div>   \n          </li>");
     }
   }]);
 
@@ -459,7 +455,7 @@ var Search = /*#__PURE__*/function () {
   }, {
     key: "check",
     value: function check(item) {
-      if (item === "" || item === " ") {
+      if (item === "" || item === " " || item === "  " || item === "   ") {
         return false;
       }
 
